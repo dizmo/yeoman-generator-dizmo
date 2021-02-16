@@ -154,7 +154,7 @@ describe('generator-dizmo:sub-typescript', function () {
                     'request': '^2.88.2',
                     'rimraf': '^3.0.2',
                     'sass': '^1.32.2',
-                    'sass-loader': '^10.1.1',
+                    'sass-loader': '^11.0.1',
                     'style-loader': '^2.0.0',
                     'ts-loader': '^8.0.14',
                     'typescript': '^4.1.3',
@@ -163,7 +163,7 @@ describe('generator-dizmo:sub-typescript', function () {
                 },
                 'optionalDependencies': {
                     'closure-webpack-plugin': '^2.5.0',
-                    'google-closure-compiler': '^20210106.0.0',
+                    'google-closure-compiler': '^20210202.0.0',
                     'minami': '^1.2.3',
                     'pump': '^3.0.0',
                     'typedoc': '^0.20.14',

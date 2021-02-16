@@ -320,7 +320,7 @@ module.exports = class extends Generator {
                     'babel-loader': '^8.2.2',
                     'css-loader': '^5.0.1',
                     'sass': '^1.32.2',
-                    'sass-loader': '^10.1.1',
+                    'sass-loader': '^11.0.1',
                     'style-loader': '^2.0.0',
                     'webpack': '^5.12.3',
                     'webpack-stream': '^6.1.1',
@@ -353,7 +353,7 @@ module.exports = class extends Generator {
             pkg.optionalDependencies = sort(
                 lodash.assign(pkg.optionalDependencies, {
                     'closure-webpack-plugin': '^2.5.0',
-                    'google-closure-compiler': '^20210106.0.0',
+                    'google-closure-compiler': '^20210202.0.0',
                     'jsdoc': '^3.6.6',
                     'minami': '^1.2.3',
                     'pump': '^3.0.0',
