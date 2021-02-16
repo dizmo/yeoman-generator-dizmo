@@ -166,7 +166,7 @@ describe('generator-dizmo:sub-typescript', function () {
                     'google-closure-compiler': '^20210202.0.0',
                     'minami': '^1.2.3',
                     'pump': '^3.0.0',
-                    'typedoc': '^0.20.14',
+                    'typedoc': '^0.20.25',
                     'webpack-obfuscator': '^3.2.0'
                 },
                 'license': 'ISC',

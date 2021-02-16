@@ -74,7 +74,7 @@ module.exports = class extends Generator {
             const pkg = this.fs.readJSON(pkg_path);
             pkg.optionalDependencies = sort(
                 lodash.assign(pkg.optionalDependencies, {
-                    'typedoc': '^0.20.14'
+                    'typedoc': '^0.20.25'
                 })
             );
             delete pkg.optionalDependencies['jsdoc'];
