@@ -35,11 +35,11 @@ gulp.task('scripts', async () => {
             ...webpack_config, ...argv.sourcemaps
         };
     } else {
-        for (const rule of webpack_config.module?.rules ?? []) {
+        for (const rule of (oc(webpack_config.module, 'rules') || [])) {
             if (`${rule.test}` !== `${/\.(s[ac]ss|css)$/i}`) {
                 continue;
             }
-            for (const u of rule.use ?? []) {
+            for (const u of (rule.use || [])) {
                 if (typeof u.loader === 'string' &&
                     u.loader.match(/s?css-loader$/)
                 ) {
@@ -135,4 +135,7 @@ function regexify(value) {
         }
     }
     return value;
+}
+function oc(el, a) {
+    return el ? el[a] : undefined;
 }
