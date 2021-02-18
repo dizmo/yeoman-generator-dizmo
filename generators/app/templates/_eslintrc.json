@@ -9,7 +9,8 @@
     "globals": {
         "bundle": false,
         "dizmo": false,
-        "viewer": false
+        "viewer": false,
+        "global": false
     },
     "parserOptions": {
         "sourceType": "module",

@@ -46,13 +46,11 @@ Now, any change in the current directory (except in `build/` and `node_modules/`
 
 ## Testing
 
-By default *no* test cases *nor* a test framework are pre-defined:
+Runs tests from the `test/` folder &ndash; exiting with a code of `0` indicating success; otherwise, in case of a failure a code of `1` is returned:
 
 ```sh
 npm run test
 ```
-
-Runs tests (if any) &ndash; but actually the script simply returns an `exit 0` indicating a (dummy) success. If desired, integrate your test framework of choice, write your test cases and override the `test` script in `package.json` accordingly. The only requirement is that the main test script should return `0` in case of a successful test run.
 
 ## Documentation
 

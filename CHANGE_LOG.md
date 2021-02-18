@@ -1,5 +1,11 @@
 # CHANGE LOG
 
+## v10.7.z
+
+* Support for unit testing:
+
+    By running `npm run test` (or `npm test`) the tests in the `test` folder are executed. By default the entire main script of a dizmo is loaded and is tested against (in an *empty* DOM environment).
+
 ## v10.6.z
 
 * Support for importing `*.[s]css` stylesheets:

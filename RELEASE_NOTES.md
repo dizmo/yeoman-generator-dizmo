@@ -22,6 +22,10 @@
 
 ### NOTABLE CHANGES
 
+* Support for unit testing:
+
+    By running `npm run test` (or `npm test`) the tests in the `test` folder are executed. By default the entire main script of a dizmo is loaded and is tested against (in an *empty* DOM environment).
+
 * Support for `jsdoc` for JavaScript:
 
     By running `npm run docs` in source comments are parsed by `jsdoc` and the corresponding documentation is generated in the `docs` folder. The `jsdoc` tool can be configured via the `jsdoc.json` file.

@@ -282,11 +282,24 @@ module.exports = class extends Generator {
         if (!upgrade || upgrade) {
             if (!this.fs.exists(this.destinationPath(
                 'webpack.config.js'
-            ))) this.fs.copyTpl(
-                this.templatePath('webpack.config.js'),
-                this.destinationPath('webpack.config.js'),
-                this.properties
-            );
+            ))) {
+                this.fs.copyTpl(
+                    this.templatePath('webpack.config.js'),
+                    this.destinationPath('webpack.config.js'),
+                    this.properties
+                );
+            }
+        }
+        if (!upgrade || upgrade) {
+            if (!this.fs.exists(this.destinationPath(
+                'webpack.config.test.js'
+            ))) {
+                this.fs.copyTpl(
+                    this.templatePath('webpack.config.test.js'),
+                    this.destinationPath('webpack.config.test.js'),
+                    this.properties
+                );
+            }
         }
         if (!upgrade || upgrade) {
             this.fs.copy(
@@ -324,6 +337,17 @@ module.exports = class extends Generator {
                     'style-loader': '^2.0.0',
                     'webpack': '^5.12.3',
                     'webpack-stream': '^6.1.1',
+                    'webpack-cli': '^4.5.0'
+                })
+            );
+            pkg.devDependencies = sort(
+                lodash.assign(pkg.devDependencies, {
+                    'chai': '^4.3.0',
+                    'chai-spies': '^1.0.0',
+                    'ignore-styles': '^5.0.1',
+                    'jsdom': '^16.4.0',
+                    'jsdom-global': '^3.0.2',
+                    'mocha': '^8.3.0'
                 })
             );
             pkg.devDependencies = sort(
@@ -367,6 +391,7 @@ module.exports = class extends Generator {
                     'deploy': 'node ./gulp/tools/run-task.js deploy',
                     'docs': 'node ./gulp/tools/run-task.js docs',
                     'lint': 'node ./gulp/tools/run-task.js lint',
+                    'test': 'node ./gulp/tools/run-task.js test',
                     'upload': 'node ./gulp/tools/run-task.js upload',
                     'watch': 'node ./gulp/tools/run-task.js watch'
                 })
@@ -424,6 +449,22 @@ module.exports = class extends Generator {
             );
         }
         if (!upgrade || upgrade) {
+            this.fs.copy(
+                this.templatePath('test/'),
+                this.destinationPath('test/')
+            );
+            this.fs.copyTpl(
+                this.templatePath('test/test.js'),
+                this.destinationPath('test/test.js'),
+                this.properties
+            );
+            if (this.fs.exists('src/index.js')) {
+                const script = this.fs.read('src/index.js')
+                    .replace(/window/g, 'global');
+                this.fs.write('src/index.js', script);
+            }
+        }
+        if (!upgrade || upgrade) {
             if (this.options.git || fs.existsSync('.gitignore')) {
                 this.fs.copy(
                     this.templatePath('_npmignore'),
@@ -445,10 +486,12 @@ module.exports = class extends Generator {
                 this.templatePath('src/lib/i18n-2.1.0.min.js.map'),
                 this.destinationPath('src/lib/i18n-2.1.0.min.js.map')
             );
-            const html = this.fs.read('src/index.html')
-                .replace(/lib\/i18n-\d.\d.\d.min.js/, 'lib/i18n-2.1.0.min.js')
-                .replace(/style\/style.css/, 'styles/styles.css');
-            this.fs.write('src/index.html', html);
+            if (this.fs.exists('src/index.html')) {
+                const html = this.fs.read('src/index.html')
+                    .replace(/lib\/i18n-\d.\d.\d.min.js/, 'lib/i18n-2.1.0.min.js')
+                    .replace(/style\/style.css/, 'styles/styles.css');
+                this.fs.write('src/index.html', html);
+            }
         }
         this.conflicter.force = upgrade;
     }

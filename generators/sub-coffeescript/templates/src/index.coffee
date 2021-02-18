@@ -1,16 +1,16 @@
 ###*
-# Shows the `#back` side of a dizmo; assignment to `window`
+# Shows the `#back` side of a dizmo; assignment to `global`
 # enables in the dizmo menu the *settings* entry.
 # @global
 ###
-window.showBack = -> dizmo.showBack()
+global.showBack = -> dizmo.showBack()
 
 ###*
-# Shows the `#front` side of a dizmo; assignment to `window`
+# Shows the `#front` side of a dizmo; assignment to `global`
 # enables in the dizmo menu the *content* entry.
 # @global
 ###
-window.showFront = -> dizmo.showFront()
+global.showFront = -> dizmo.showFront()
 
 ###*
 # Handler to be invoked once the translations are fetched;
@@ -30,20 +30,20 @@ export onI18n = (error, translate) ->
     done.textContent = translate '#back/done'
     return
 
-window.i18n onI18n
+global.i18n onI18n
 
 ###*
 # Handler to be invoked once the dizmo is ready.
 # @function
 ###
 export onDizmoReady = ->
-    dizmo.subscribeToAttribute 'settings/framecolor', (path, value) ->
+    dizmo.subscribeToAttribute 'settings/framecolor', () ->
         front = document.getElementById 'front'
         front.style.color = dizmo.getAdaptiveColor()
     done = document.getElementById 'done'
     done.onclick = -> dizmo.showFront()
     return
 
-window.document.addEventListener 'dizmoready', onDizmoReady, {
+global.document.addEventListener 'dizmoready', onDizmoReady, {
     once: true
 }

@@ -12,7 +12,10 @@ const run = (command, ...args) => (options = {}) =>
         return (code === 0 ? resolve : reject)(code);
     })
 );
-const npx = (...args) => run('npx', '--quiet', ...args)({
+const npx = (...args) => run('npx', ...args)({
+    stdio: 'inherit'
+});
+const npx_q = (...args) => run('npx', '--quiet', ...args)({
     stdio: 'ignore'
 });
 const npm = (...args) => run('npm', ...args)({
@@ -24,5 +27,5 @@ const npm_i = (package, ...args) =>
         .then((code) => package ? require(package) : code);
 
 module.exports = {
-    arg, run, npx, npm, npm_i
+    arg, run, npx, npx_q, npm, npm_i
 };

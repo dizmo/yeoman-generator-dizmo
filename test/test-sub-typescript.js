@@ -86,9 +86,12 @@ describe('generator-dizmo:sub-typescript', function () {
                 'src/lib/i18n-2.1.0.min.js.map',
                 'src/styles',
                 'src/styles/styles.scss',
+                'test',
+                'test/test.ts',
                 'tsconfig.json',
                 'typedoc.json',
                 'webpack.config.js',
+                'webpack.config.test.js',
                 '.yo-rc.json',
             ]);
             assert.noFile([
@@ -133,10 +136,15 @@ describe('generator-dizmo:sub-typescript', function () {
                 'devDependencies': {
                     '@babel/core': '^7.12.10',
                     '@babel/preset-env': '^7.12.11',
+                    '@types/chai': '^4.2.15',
+                    '@types/chai-spies': '^1.0.3',
+                    '@types/mocha': '^8.2.1',
                     '@typescript-eslint/eslint-plugin': '4.12.0',
                     '@typescript-eslint/parser': '4.12.0',
                     'ansi-colors': '^4.1.1',
                     'babel-loader': '^8.2.2',
+                    'chai': '^4.3.0',
+                    'chai-spies': '^1.0.0',
                     'css-loader': '^5.0.1',
                     'eslint': '^7.17.0',
                     'fancy-log': '^1.3.3',
@@ -151,6 +159,10 @@ describe('generator-dizmo:sub-typescript', function () {
                     'gulp-sourcemaps': '^3.0.0',
                     'gulp-ver': '^0.1.0',
                     'gulp-zip': '^5.0.2',
+                    'ignore-styles': '^5.0.1',
+                    'jsdom': '^16.4.0',
+                    'jsdom-global': '^3.0.2',
+                    'mocha': '^8.3.0',
                     'request': '^2.88.2',
                     'rimraf': '^3.0.2',
                     'sass': '^1.32.2',
@@ -159,6 +171,7 @@ describe('generator-dizmo:sub-typescript', function () {
                     'ts-loader': '^8.0.14',
                     'typescript': '^4.1.3',
                     'webpack': '^5.12.3',
+                    'webpack-cli': '^4.5.0',
                     'webpack-stream': '^6.1.1'
                 },
                 'optionalDependencies': {
@@ -181,7 +194,7 @@ describe('generator-dizmo:sub-typescript', function () {
                     'deploy': 'node ./gulp/tools/run-task.js deploy',
                     'docs': 'node ./gulp/tools/run-task.js docs',
                     'lint': 'node ./gulp/tools/run-task.js lint',
-                    'test': 'exit 0',
+                    'test': 'node ./gulp/tools/run-task.js test',
                     'upload': 'node ./gulp/tools/run-task.js upload',
                     'watch': 'node ./gulp/tools/run-task.js watch'
                 }

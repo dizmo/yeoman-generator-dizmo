@@ -46,11 +46,43 @@ module.exports = class extends Generator {
             }
         }
         if (!upgrade || upgrade) {
+            const tpl_path = this.templatePath('webpack.config.test.js');
+            const dst_path = this.destinationPath('webpack.config.test.js');
+            const pkg_path = this.destinationPath('package.json');
+            const pkg = this.fs.readJSON(pkg_path);
+            try {
+                const config = require(dst_path) || {};
+                const module = config.module || {};
+                const rules = module.rules || [];
+                if (!rules.find((r) =>
+                    typeof r.loader === 'object' &&
+                    r.loader.indexOf('ts-loader') >= 0 ||
+                    typeof r.loader === 'string' &&
+                    r.loader.match(/ts-loader/)
+                )) {
+                    this.fs.copyTpl(tpl_path, dst_path, {
+                        dizmoName: pkg.name
+                    });
+                }
+            } catch (ex) {
+                this.fs.copyTpl(tpl_path, dst_path, {
+                    dizmoName: pkg.name
+                });
+            }
+        }
+        if (!upgrade || upgrade) {
             const pkg_path = this.destinationPath('package.json');
             const pkg = this.fs.readJSON(pkg_path);
             pkg.dependencies = sort(
                 lodash.assign(pkg.dependencies, {
                     '@dizmo/dizmo.js': '^1.4.24'
+                })
+            );
+            pkg.devDependencies = sort(
+                lodash.assign(pkg.devDependencies, {
+                    '@types/chai': '^4.2.15',
+                    '@types/chai-spies': '^1.0.3',
+                    '@types/mocha': '^8.2.1'
                 })
             );
             pkg.devDependencies = sort(
@@ -87,6 +119,25 @@ module.exports = class extends Generator {
                 this.destinationPath('typedoc.json')
             );
         }
+        if (!upgrade || upgrade) {
+            const pkg_path = this.destinationPath('package.json');
+            const pkg = this.fs.readJSON(pkg_path);
+            this.fs.copy(
+                this.templatePath('test/'),
+                this.destinationPath('test/')
+            );
+            this.fs.copyTpl(
+                this.templatePath('test/test.ts'),
+                this.destinationPath('test/test.ts'), {
+                    dizmoName: pkg.name
+                }
+            );
+            if (this.fs.exists('src/index.ts')) {
+                const script = this.fs.read('src/index.ts')
+                    .replace(/window/g, 'global');
+                this.fs.write('src/index.ts', script);
+            }
+        }
         if (!upgrade) {
             this.fs.copy(
                 this.templatePath('src/'),
@@ -108,6 +159,9 @@ module.exports = class extends Generator {
         );
         rimraf.sync(
             this.destinationPath('src/index.js')
+        );
+        rimraf.sync(
+            this.destinationPath('test/test.js')
         );
     }
 };

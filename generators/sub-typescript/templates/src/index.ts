@@ -1,6 +1,5 @@
 /* eslint @typescript-eslint/explicit-function-return-type: [off] */
 /* eslint @typescript-eslint/no-explicit-any: [off] */
-/* eslint @typescript-eslint/no-unused-vars: [off] */
 
 import { Global } from "@dizmo/dizmo.js";
 declare const global: Global;
@@ -43,7 +42,7 @@ global.i18n(onI18n);
  * Handler to be invoked once the dizmo is ready.
  */
 const onDizmoReady = () => {
-    dizmo.subscribeToAttribute('settings/framecolor', (path, value) => {
+    dizmo.subscribeToAttribute('settings/framecolor', () => {
         const front = document.getElementById('front') as HTMLElement;
         front.style.color = dizmo.getAdaptiveColor();
     });

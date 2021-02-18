@@ -204,6 +204,8 @@ tree
 │   │   └── i18n-*.min.js
 │   └── style
 │       └── style.scss
+├── test
+│   └── test.js
 └── webpack.config.js
 ```
 
@@ -228,6 +230,8 @@ Let's have a look at each ot the top level files and directories:
 * `README.md`: A simple shortened version of this README.md; it is meant to provide a quick overview, and can then be replaced with a project specific content.
 
 * `src`: A folder containing your own scripts for your dizmo, like `index.html` and `index.js` plus style sheets under `style/`, which use by default [SASS](http://sass-lang.com/). Further, in the `src/lib/` folder you can put third party libraries, which you can then directly reference via a `<script>` tag in the `index.html` markup.
+
+* `test`: A folder containing your test cases.
 
 * `webpack.config.js`: project wide configuration file for the [webpack] bundler.
 
@@ -324,7 +328,7 @@ npm run lint
 npm run build
 ```
 
-* `test`: ensures to run tests &ndash; by default no tests nor a test framework are pre-defined, hence *no* such script is predefined either! It is up to the dizmo developer to decide how tests shall be implemented. The only condition is, that the main test script should provide an exit value of `0` in case of success.
+* `test`: ensures to run tests &ndash; returns and error code of `0` for success and `1` for failure.
 
 ```sh
 npm run test
