@@ -1,4 +1,3 @@
-/* eslint @typescript-eslint/explicit-function-return-type: [off] */
 /* eslint @typescript-eslint/no-explicit-any: [off] */
 
 import { Global } from "@dizmo/dizmo.js";
@@ -30,7 +29,7 @@ global.showFront = () => dizmo.showFront();
  */
 export const onI18n = (
     error: Error | null, translate: (key: string) => string | any
-) => {
+): void => {
     const cell = document.getElementsByClassName('table-cell')[0];
     cell.textContent = translate('#front/greeting') as string;
     const done = document.getElementById('done') as HTMLElement;
@@ -41,7 +40,7 @@ global.i18n(onI18n);
 /**
  * Handler to be invoked once the dizmo is ready.
  */
-export const onDizmoReady = () => {
+export const onDizmoReady = (): void => {
     dizmo.subscribeToAttribute('settings/framecolor', () => {
         const front = document.getElementById('front') as HTMLElement;
         front.style.color = dizmo.getAdaptiveColor();
