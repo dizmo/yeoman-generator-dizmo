@@ -7,7 +7,7 @@ const jsdoc = () => new Promise((resolve, reject) => {
             return reject(e);
         }
         try {
-            await cli.npx('coffee', '-cbo', path, 'src');
+            await cli.npx('coffee', '-cbo', path, 'source');
         } catch (e) {
             return reject(e);
         }

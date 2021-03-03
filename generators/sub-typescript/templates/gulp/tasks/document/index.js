@@ -2,8 +2,7 @@ const cli = require('../../tools/cli.js');
 const gulp = require('gulp');
 
 const typedoc = () => cli.npx('typedoc',
-    '--inputFiles', 'source/index.ts',
-    '--options', 'typedoc.json'
+    'source/index.ts', '--options', 'typedoc.json'
 );
 gulp.task('docs', async (done) => {
     await cli.npx('rimraf', 'docs');

@@ -28,7 +28,7 @@ global.showFront = () => dizmo.showFront();
  * @param translate
  *  Translator function
  */
-const onI18n = (
+export const onI18n = (
     error: Error | null, translate: (key: string) => string | any
 ) => {
     const cell = document.getElementsByClassName('table-cell')[0];
@@ -41,7 +41,7 @@ global.i18n(onI18n);
 /**
  * Handler to be invoked once the dizmo is ready.
  */
-const onDizmoReady = () => {
+export const onDizmoReady = () => {
     dizmo.subscribeToAttribute('settings/framecolor', () => {
         const front = document.getElementById('front') as HTMLElement;
         front.style.color = dizmo.getAdaptiveColor();

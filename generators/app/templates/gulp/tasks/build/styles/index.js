@@ -5,7 +5,7 @@ const gulp_sourcemaps = require('gulp-sourcemaps');
 const path = require('path');
 
 gulp.task('styles:copy', () =>
-    gulp.src(['source/styles/**/*', '!source/styles/**/*.scss'], { base: 'src' })
+    gulp.src(['source/styles/**/*', '!source/styles/**/*.scss'], { base: 'source' })
         .pipe(gulp.dest(path.join('build', pkg.name)))
 );
 gulp.task('styles:sass', () => {
