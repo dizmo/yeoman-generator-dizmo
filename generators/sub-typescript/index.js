@@ -88,14 +88,14 @@ module.exports = class extends Generator {
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
-                    '@typescript-eslint/eslint-plugin': '4.12.0',
-                    '@typescript-eslint/parser': '4.12.0'
+                    '@typescript-eslint/eslint-plugin': '4.16.1',
+                    '@typescript-eslint/parser': '4.16.1'
                 })
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
-                    'ts-loader': '^8.0.14',
-                    'typescript': '^4.1.3'
+                    'ts-loader': '^8.0.17',
+                    'typescript': '^4.2.2'
                 })
             );
             delete pkg.devDependencies['gulp-tslint'];
@@ -107,7 +107,7 @@ module.exports = class extends Generator {
             const pkg = this.fs.readJSON(pkg_path);
             pkg.optionalDependencies = sort(
                 lodash.assign(pkg.optionalDependencies, {
-                    'typedoc': '^0.20.25'
+                    'typedoc': '^0.20.28'
                 })
             );
             delete pkg.optionalDependencies['jsdoc'];

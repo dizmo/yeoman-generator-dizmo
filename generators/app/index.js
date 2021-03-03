@@ -325,25 +325,25 @@ module.exports = class extends Generator {
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
-                    '@babel/core': '^7.12.10',
-                    '@babel/preset-env': '^7.12.11'
+                    '@babel/core': '^7.13.8',
+                    '@babel/preset-env': '^7.13.9'
                 })
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
                     'babel-loader': '^8.2.2',
-                    'css-loader': '^5.0.1',
-                    'sass': '^1.32.2',
+                    'css-loader': '^5.1.1',
+                    'sass': '^1.32.8',
                     'sass-loader': '^11.0.1',
                     'style-loader': '^2.0.0',
-                    'webpack': '^5.12.3',
-                    'webpack-stream': '^6.1.1',
+                    'webpack': '^5.24.2',
+                    'webpack-stream': '^6.1.2',
                     'webpack-cli': '^4.5.0'
                 })
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
-                    'chai': '^4.3.0',
+                    'chai': '^4.3.3',
                     'chai-spies': '^1.0.0',
                     'ignore-styles': '^5.0.1',
                     'jsdom': '^16.4.0',
@@ -369,7 +369,7 @@ module.exports = class extends Generator {
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
                     'ansi-colors': '^4.1.1',
-                    'eslint': '^7.17.0',
+                    'eslint': '^7.21.0',
                     'fancy-log': '^1.3.3',
                     'request': '^2.88.2',
                     'rimraf': '^3.0.2'
@@ -382,7 +382,7 @@ module.exports = class extends Generator {
                     'jsdoc': '^3.6.6',
                     'minami': '^1.2.3',
                     'pump': '^3.0.0',
-                    'webpack-obfuscator': '^3.2.0'
+                    'webpack-obfuscator': '^3.3.0'
                 })
             );
             pkg.scripts = sort(
