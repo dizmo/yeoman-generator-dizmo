@@ -1,7 +1,7 @@
 const { resolve } = require('path');
 module.exports = {
     entry: {
-        main: ['@babel/polyfill', './src/index.coffee']
+        main: ['@babel/polyfill', './source/index.coffee']
     },
     module: {
         rules: [{

@@ -18,10 +18,10 @@ gulp.task('libraries', () => {
         argv.sourcemaps.devtool &&
         argv.sourcemaps.devtool !== 'none'
     ) {
-        return gulp.src(['src/lib/**/*'], { base: 'src' })
+        return gulp.src(['source/lib/**/*'], { base: 'src' })
             .pipe(gulp.dest(path.join('build', pkg.name)));
     } else {
-        return gulp.src(['src/lib/**/*', '!src/lib/**/*.map'], { base: 'src' })
+        return gulp.src(['source/lib/**/*', '!source/lib/**/*.map'], { base: 'src' })
             .pipe(gulp.dest(path.join('build', pkg.name)));
     }
 });

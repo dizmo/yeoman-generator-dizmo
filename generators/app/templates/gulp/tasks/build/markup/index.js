@@ -29,7 +29,7 @@ gulp.task('markup', () => {
     const argv = require('yargs')
         .default('htmlmin', minify === true).argv;
 
-    let stream = gulp.src(['src/**/*.html'])
+    let stream = gulp.src(['source/**/*.html'])
         .pipe(gulp_replace(rgx_script('dizmojs'), (match, ...groups) => {
             if (api_version) {
                 if (api_version !== groups[1]) warn(

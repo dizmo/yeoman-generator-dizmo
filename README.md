@@ -197,7 +197,7 @@ tree
 ├── LICENSE
 ├── package.json
 ├── README.md
-├── src
+├── source
 │   ├── index.html
 │   ├── index.js
 │   ├── lib
@@ -229,7 +229,7 @@ Let's have a look at each ot the top level files and directories:
 
 * `README.md`: A simple shortened version of this README.md; it is meant to provide a quick overview, and can then be replaced with a project specific content.
 
-* `src`: A folder containing your own scripts for your dizmo, like `index.html` and `index.js` plus style sheets under `style/`, which use by default [SASS](http://sass-lang.com/). Further, in the `src/lib/` folder you can put third party libraries, which you can then directly reference via a `<script>` tag in the `index.html` markup.
+* `source`: A folder containing your own scripts for your dizmo, like `index.html` and `index.js` plus style sheets under `style/`, which use by default [SASS](http://sass-lang.com/). Further, in the `source/lib/` folder you can put third party libraries, which you can then directly reference via a `<script>` tag in the `index.html` markup.
 
 * `test`: A folder containing your test cases.
 
@@ -661,7 +661,7 @@ This approach works well, as long as the external libraries are not too large, s
 npm run watch
 ```
 
-Or you can simply drop a library into the `src/lib/` sub-directory and reference it via a corresponding `<script>` tag in the `index.html` markup.
+Or you can simply drop a library into the `source/lib/` sub-directory and reference it via a corresponding `<script>` tag in the `index.html` markup.
 
 ## Troubleshooting/FAQ
 

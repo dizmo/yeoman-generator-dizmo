@@ -10,7 +10,7 @@ gulp.task('lint', (done) => {
     }
     if (argv.lint || argv.lint === undefined) {
         return gulp
-            .src(['src/**/*.ts', '!{src/lib,build,node_modules}/**'])
+            .src(['source/**/*.ts', '!{source/lib,build,node_modules}/**'])
             .pipe(gulp_eslint({ ...argv.lint }))
             .pipe(gulp_eslint.format());
     } else {

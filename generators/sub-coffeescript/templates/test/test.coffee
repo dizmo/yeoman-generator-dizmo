@@ -4,7 +4,7 @@ chai.use spies
 
 before () ->
     global.i18n = chai.spy()
-    require '../src/index.coffee'
+    require '../source/index.coffee'
 
 describe '<%= dizmoName %>', () ->
     it 'should expect global.showBack to be a function', () ->

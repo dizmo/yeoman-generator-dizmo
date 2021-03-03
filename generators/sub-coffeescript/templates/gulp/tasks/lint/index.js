@@ -9,7 +9,7 @@ gulp.task('lint', (done) => {
     }
     if (argv.lint || argv.lint === undefined) {
         let stream = gulp.src([
-            './src/**/*.coffee', '!src/lib/**', '!build/**', '!node_modules/**'
+            './source/**/*.coffee', '!source/lib/**', '!build/**', '!node_modules/**'
         ]);
         if (Object.keys(argv.lint).length > 0) {
             stream = stream.pipe(gulp_coffeelint({ ...argv.lint }));

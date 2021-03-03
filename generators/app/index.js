@@ -2,6 +2,7 @@
 
 const chalk = require('chalk');
 const fs = require('fs');
+const fse = require('fs-extra');
 const Generator = require('yeoman-generator');
 const lodash = require('lodash');
 const os = require('os');
@@ -396,13 +397,6 @@ module.exports = class extends Generator {
                     'watch': 'node ./gulp/tools/run-task.js watch'
                 })
             );
-            if (pkg.scripts.test === undefined) {
-                pkg.scripts = sort(
-                    lodash.assign(pkg.scripts, {
-                        'test': 'exit 0'
-                    })
-                );
-            }
             this.fs.writeJSON(pkg_path, pkg, null, 2);
         }
         if (!upgrade) {
@@ -420,12 +414,12 @@ module.exports = class extends Generator {
                 this.properties
             );
             this.fs.copy(
-                this.templatePath('src/'),
-                this.destinationPath('src/')
+                this.templatePath('source/'),
+                this.destinationPath('source/')
             );
             this.fs.copyTpl(
-                this.templatePath('src/index.html'),
-                this.destinationPath('src/index.html'),
+                this.templatePath('source/index.html'),
+                this.destinationPath('source/index.html'),
                 this.properties
             );
             this.fs.copy(
@@ -458,11 +452,10 @@ module.exports = class extends Generator {
                 this.destinationPath('test/test.js'),
                 this.properties
             );
-            if (this.fs.exists('src/index.js')) {
-                const script = this.fs.read('src/index.js')
-                    .replace(/window/g, 'global');
-                this.fs.write('src/index.js', script);
-            }
+            this.fs.copy(
+                this.templatePath('_travis.yml'),
+                this.destinationPath('.travis.yml')
+            );
         }
         if (!upgrade || upgrade) {
             if (this.options.git || fs.existsSync('.gitignore')) {
@@ -475,22 +468,6 @@ module.exports = class extends Generator {
                     this.templatePath('_npmignore'),
                     this.destinationPath('.npmignore')
                 );
-            }
-        }
-        if (!upgrade || upgrade) {
-            this.fs.copy(
-                this.templatePath('src/lib/i18n-2.1.0.min.js'),
-                this.destinationPath('src/lib/i18n-2.1.0.min.js')
-            );
-            this.fs.copy(
-                this.templatePath('src/lib/i18n-2.1.0.min.js.map'),
-                this.destinationPath('src/lib/i18n-2.1.0.min.js.map')
-            );
-            if (this.fs.exists('src/index.html')) {
-                const html = this.fs.read('src/index.html')
-                    .replace(/lib\/i18n-\d.\d.\d.min.js/, 'lib/i18n-2.1.0.min.js')
-                    .replace(/style\/style.css/, 'styles/styles.css');
-                this.fs.write('src/index.html', html);
             }
         }
         this.conflicter.force = upgrade;
@@ -527,22 +504,71 @@ module.exports = class extends Generator {
         this._git();
     }
     _mov() {
-        if (fs.existsSync(this.destinationPath('src/style'))) {
-            fs.renameSync(
-                this.destinationPath('src/style'),
-                this.destinationPath('src/styles')
+        if (fs.existsSync(
+            this.destinationPath('src')
+        ) && !fs.existsSync(
+            this.destinationPath('source')
+        )) {
+            fse.moveSync(
+                this.destinationPath('src'),
+                this.destinationPath('source')
             );
         }
-        if (fs.existsSync(this.destinationPath('src/styles/style.scss'))) {
+        if (fs.existsSync(
+            this.destinationPath('source/index.js')
+        )) {
+            const script = fs
+                .readFileSync(this.destinationPath('source/index.js'), 'utf8')
+                .replace(/window/g, 'global');
+            fs.writeFileSync(
+                this.destinationPath('source/index.js'), script
+            );
+        }
+        if (fs.existsSync(
+            this.destinationPath('source/index.html')
+        )) {
+            const html = fs
+                .readFileSync(this.destinationPath('source/index.html'), 'utf8')
+                .replace(/lib\/i18n-\d.\d.\d.min.js/, 'lib/i18n-2.1.0.min.js')
+                .replace(/style\/style.css/, 'styles/styles.css');
+            fs.writeFileSync(
+                this.destinationPath('source/index.html'), html
+            );
+        }
+        if (fs.existsSync(
+            this.destinationPath('webpack.config.js')
+        )) {
+            const config = fs
+                .readFileSync(this.destinationPath('webpack.config.js'), 'utf8')
+                .replace(/src\/index/, 'source/index');
+            fs.writeFileSync(
+                this.destinationPath('webpack.config.js'), config
+            );
+        }
+        if (fs.existsSync(
+            this.destinationPath('source/style')
+        ) && !fs.existsSync(
+            this.destinationPath('source/styles')
+        )) {
             fs.renameSync(
-                this.destinationPath('src/styles/style.scss'),
-                this.destinationPath('src/styles/styles.scss')
+                this.destinationPath('source/style'),
+                this.destinationPath('source/styles')
+            );
+        }
+        if (fs.existsSync(
+            this.destinationPath('source/styles/style.scss')
+        ) && !fs.existsSync(
+            this.destinationPath('source/styles/styles.scss')
+        )) {
+            fs.renameSync(
+                this.destinationPath('source/styles/style.scss'),
+                this.destinationPath('source/styles/styles.scss')
             );
         }
     }
     _rim() {
         rimraf.sync(
-            this.destinationPath('node_modules/')
+            this.destinationPath('node_modules')
         );
     }
     _git() {

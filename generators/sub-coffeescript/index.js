@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require('fs');
+const fse = require('fs-extra');
 const Generator = require('yeoman-generator');
 const lodash = require('lodash');
 const rimraf = require('rimraf');
@@ -97,16 +98,11 @@ module.exports = class extends Generator {
                     dizmoName: pkg.name
                 }
             );
-            if (this.fs.exists('src/index.coffee')) {
-                const script = this.fs.read('src/index.coffee')
-                    .replace(/window/g, 'global');
-                this.fs.write('src/index.coffee', script);
-            }
         }
         if (!upgrade) {
             this.fs.copy(
-                this.templatePath('src/'),
-                this.destinationPath('src/')
+                this.templatePath('source/'),
+                this.destinationPath('source/')
             );
             this.fs.copy(
                 this.templatePath('coffeelint.json'),
@@ -116,11 +112,37 @@ module.exports = class extends Generator {
         this.conflicter.force = this.options.force || upgrade;
     }
     end() {
+        this._mov();
+        this._rim();
+    }
+    _mov() {
+        if (fs.existsSync(
+            this.destinationPath('src')
+        ) && !fs.existsSync(
+            this.destinationPath('source')
+        )) {
+            fse.moveSync(
+                this.destinationPath('src'),
+                this.destinationPath('source')
+            );
+        }
+        if (fs.existsSync(
+            this.destinationPath('source/index.coffee')
+        )) {
+            const script = fs
+                .readFileSync(this.destinationPath('source/index.coffee'), 'utf8')
+                .replace(/window/g, 'global');
+            fs.writeFileSync(
+                this.destinationPath('source/index.coffee'), script
+            );
+        }
+    }
+    _rim() {
         rimraf.sync(
             this.destinationPath('.eslintrc.json')
         );
         rimraf.sync(
-            this.destinationPath('src/index.js')
+            this.destinationPath('source/index.js')
         );
         rimraf.sync(
             this.destinationPath('test/test.js')

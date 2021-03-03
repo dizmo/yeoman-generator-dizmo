@@ -5,7 +5,7 @@ const gulp_sourcemaps = require('gulp-sourcemaps');
 const path = require('path');
 
 gulp.task('styles:copy', () =>
-    gulp.src(['src/styles/**/*', '!src/styles/**/*.scss'], { base: 'src' })
+    gulp.src(['source/styles/**/*', '!source/styles/**/*.scss'], { base: 'src' })
         .pipe(gulp.dest(path.join('build', pkg.name)))
 );
 gulp.task('styles:sass', () => {
@@ -15,7 +15,7 @@ gulp.task('styles:sass', () => {
         .default('sourcemaps', false)
         .default('sass', minify === true).argv;
 
-    let stream = gulp.src(['src/styles/**/*.scss']);
+    let stream = gulp.src(['source/styles/**/*.scss']);
     if (typeof argv.sourcemaps === 'string') {
         argv.sourcemaps = JSON.parse(argv.sourcemaps);
     }

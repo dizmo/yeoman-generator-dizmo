@@ -7,7 +7,7 @@ chai.use(spies);
 
 before(() => {
     global.i18n = chai.spy();
-    require('../src/index');
+    require('../source/index');
 });
 describe('<%= dizmoName %>', () => {
     it('should expect global.showBack to be a function', () => {
