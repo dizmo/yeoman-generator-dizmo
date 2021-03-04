@@ -337,18 +337,7 @@ module.exports = class extends Generator {
                     'sass-loader': '^11.0.1',
                     'style-loader': '^2.0.0',
                     'webpack': '^5.24.2',
-                    'webpack-stream': '^6.1.2',
-                    'webpack-cli': '^4.5.0'
-                })
-            );
-            pkg.devDependencies = sort(
-                lodash.assign(pkg.devDependencies, {
-                    'chai': '^4.3.3',
-                    'chai-spies': '^1.0.0',
-                    'ignore-styles': '^5.0.1',
-                    'jsdom': '^16.4.0',
-                    'jsdom-global': '^3.0.2',
-                    'mocha': '^8.3.0'
+                    'webpack-stream': '^6.1.2'
                 })
             );
             pkg.devDependencies = sort(
@@ -372,16 +361,24 @@ module.exports = class extends Generator {
                     'eslint': '^7.21.0',
                     'fancy-log': '^1.3.3',
                     'request': '^2.88.2',
-                    'rimraf': '^3.0.2'
+                    'rimraf': '^3.0.2',
+                    'yargs': '^16.2.0'
                 })
             );
             pkg.optionalDependencies = sort(
                 lodash.assign(pkg.optionalDependencies, {
+                    'chai': '^4.3.3',
+                    'chai-spies': '^1.0.0',
                     'closure-webpack-plugin': '^2.5.0',
                     'google-closure-compiler': '^20210202.0.0',
+                    'ignore-styles': '^5.0.1',
                     'jsdoc': '^3.6.6',
+                    'jsdom': '^16.4.0',
+                    'jsdom-global': '^3.0.2',
                     'minami': '^1.2.3',
+                    'mocha': '^8.3.0',
                     'pump': '^3.0.0',
+                    'webpack-cli': '^4.5.0',
                     'webpack-obfuscator': '^3.3.0'
                 })
             );

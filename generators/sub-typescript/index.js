@@ -81,13 +81,6 @@ module.exports = class extends Generator {
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
-                    '@types/chai': '^4.2.15',
-                    '@types/chai-spies': '^1.0.3',
-                    '@types/mocha': '^8.2.1'
-                })
-            );
-            pkg.devDependencies = sort(
-                lodash.assign(pkg.devDependencies, {
                     '@typescript-eslint/eslint-plugin': '4.16.1',
                     '@typescript-eslint/parser': '4.16.1'
                 })
@@ -96,6 +89,13 @@ module.exports = class extends Generator {
                 lodash.assign(pkg.devDependencies, {
                     'ts-loader': '^8.0.17',
                     'typescript': '^4.2.2'
+                })
+            );
+            pkg.optionalDependencies = sort(
+                lodash.assign(pkg.optionalDependencies, {
+                    '@types/chai': '^4.2.15',
+                    '@types/chai-spies': '^1.0.3',
+                    '@types/mocha': '^8.2.1'
                 })
             );
             delete pkg.devDependencies['gulp-tslint'];
