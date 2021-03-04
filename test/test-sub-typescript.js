@@ -175,6 +175,7 @@ describe('generator-dizmo:sub-typescript', function () {
                     'closure-webpack-plugin': '^2.5.0',
                     'google-closure-compiler': '^20210202.0.0',
                     'ignore-styles': '^5.0.1',
+                    'javascript-obfuscator': '^2.10.7',
                     'jsdom': '^16.4.0',
                     'jsdom-global': '^3.0.2',
                     'minami': '^1.2.3',

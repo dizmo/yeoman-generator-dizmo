@@ -1,3 +1,4 @@
+const cli = require('../../../tools/cli.js');
 const pkg = require('../../../package.js');
 const gulp = require('gulp');
 const gulp_sass = require('gulp-dart-sass');
@@ -10,11 +11,12 @@ gulp.task('styles:copy', () =>
 );
 gulp.task('styles:sass', () => {
     const minify = require('yargs')
-        .default('minify').argv.minify;
+        .default('minify', cli.arg('minify', true))
+        .argv.minify;
     const argv = require('yargs')
         .default('sourcemaps', false)
-        .default('sass', minify === true).argv;
-
+        .default('sass', minify === true)
+        .argv;
     let stream = gulp.src(['source/styles/**/*.scss']);
     if (typeof argv.sourcemaps === 'string') {
         argv.sourcemaps = JSON.parse(argv.sourcemaps);

@@ -3,7 +3,8 @@ const gulp_coffeelint = require('gulp-coffeelint');
 
 gulp.task('lint', (done) => {
     const argv = require('yargs')
-        .default('lint', true).argv;
+        .default('lint', true)
+        .argv;
     if (typeof argv.lint === 'string') {
         argv.lint = JSON.parse(argv.lint);
     }

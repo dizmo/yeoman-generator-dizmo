@@ -1,3 +1,4 @@
+const cli = require('../../../tools/cli.js');
 const pkg = require('../../../package.js');
 const ansi_colors = require('ansi-colors');
 const fancy_log = require('fancy-log');
@@ -25,10 +26,11 @@ const tag_style = (path, ...g) =>
 
 gulp.task('markup', () => {
     const minify = require('yargs')
-        .default('minify').argv.minify;
+        .default('minify', cli.arg('minify', true))
+        .argv.minify;
     const argv = require('yargs')
-        .default('htmlmin', minify === true).argv;
-
+        .default('htmlmin', minify === true)
+        .argv;
     let stream = gulp.src(['source/**/*.html'])
         .pipe(gulp_replace(rgx_script('dizmojs'), (match, ...groups) => {
             if (api_version) {

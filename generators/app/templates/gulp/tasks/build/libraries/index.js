@@ -1,11 +1,12 @@
+const cli = require('../../../tools/cli.js');
 const pkg = require('../../../package.js');
 const gulp = require('gulp');
 const path = require('path');
 
 gulp.task('libraries', () => {
     const argv = require('yargs')
-        .default('sourcemaps').argv;
-
+        .default('sourcemaps', cli.arg('sourcemaps', true))
+        .argv;
     if (typeof argv.sourcemaps === 'string') {
         argv.sourcemaps = JSON.parse(argv.sourcemaps);
     }

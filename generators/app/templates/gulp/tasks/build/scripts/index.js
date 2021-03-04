@@ -1,6 +1,5 @@
 const cli = require('../../../tools/cli.js');
 const pkg = require('../../../package.js');
-
 const gulp = require('gulp');
 const path = require('path');
 
@@ -10,15 +9,14 @@ const webpack = require('webpack');
 
 gulp.task('scripts', async () => {
     const argv = require('yargs')
-        .default('minify')
-        .default('obfuscate')
-        .default('sourcemaps')
-        .default('closure', cli.arg('minify'))
+        .default('minify', cli.arg('minify', true))
+        .default('obfuscate', cli.arg('obfuscate', true))
+        .default('sourcemaps', cli.arg('sourcemaps', true))
+        .default('closure', cli.arg('minify', true))
         .coerce('webpack', (arg) => {
             const json = JSON.parse(arg || '{}');
             return map(json, (v) => regexify(v));
         }).argv;
-
     webpack_config = {
         ...webpack_config, ...argv.webpack
     };
@@ -58,7 +56,7 @@ gulp.task('scripts', async () => {
     }
     if (argv.obfuscate) {
         const obfuscator = await cli.npm_i(
-            'webpack-obfuscator'
+            'webpack-obfuscator', 'javascript-obfuscator'
         );
         webpack_config = {
             ...webpack_config, plugins: [
