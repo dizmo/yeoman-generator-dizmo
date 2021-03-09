@@ -4,7 +4,7 @@ chai.use(spies);
 
 before(() => {
     global.i18n = chai.spy();
-    require('../source/index');
+    global.index = require('../source/index');
 });
 describe('<%= dizmoName %>', () => {
     it('should expect global.showBack to be a function', () => {
@@ -18,8 +18,8 @@ describe('<%= dizmoName %>', () => {
     it('should expect global.i18n to be a function', () => {
         chai.expect(global.i18n).to.be.a('function');
     });
-    it('should expect global.i18n to have been called', () => {
-        chai.expect(global.i18n).to.have.been.called();
+    it('should expect global.i18n to have been called with onI18n', () => {
+        chai.expect(global.i18n).to.have.been.called.with(global.index.onI18n);
     });
 });
 describe('<%= dizmoName %>', () => {
