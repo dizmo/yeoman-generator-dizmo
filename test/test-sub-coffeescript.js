@@ -166,8 +166,6 @@ describe('generator-dizmo:sub-coffeescript', function () {
                 'optionalDependencies': {
                     'chai': '^4.3.3',
                     'chai-spies': '^1.0.0',
-                    'closure-webpack-plugin': '^2.5.0',
-                    'google-closure-compiler': '^20210302.0.0',
                     'ignore-styles': '^5.0.1',
                     'javascript-obfuscator': '^2.10.7',
                     'jsdoc': '^3.6.6',

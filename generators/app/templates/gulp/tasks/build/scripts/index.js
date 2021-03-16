@@ -12,7 +12,6 @@ gulp.task('scripts', async () => {
         .default('minify', cli.arg('minify', true))
         .default('obfuscate', cli.arg('obfuscate', true))
         .default('sourcemaps', cli.arg('sourcemaps', true))
-        .default('closure', cli.arg('minify', true))
         .coerce('webpack', (arg) => {
             const json = JSON.parse(arg || '{}');
             return map(json, (v) => regexify(v));
@@ -62,29 +61,6 @@ gulp.task('scripts', async () => {
             ...webpack_config, plugins: [
                 new obfuscator(argv.obfuscate)
             ]
-        };
-    }
-    if (typeof argv.closure === 'string') {
-        argv.closure = argv.closure !== argv.minify
-            ? JSON.parse(argv.closure)
-            : true;
-    }
-    if (typeof argv.closure === 'boolean') {
-        argv.closure = argv.closure ? {} : null;
-    }
-    if (argv.closure) {
-        const closure = await cli.npm_i(
-            'closure-webpack-plugin', 'google-closure-compiler'
-        );
-        const optimization = {
-            minimizer: [
-                new closure({ mode: 'STANDARD' }, {
-                    ...argv.closure
-                })
-            ]
-        };
-        webpack_config = {
-            ...webpack_config, optimization
         };
     }
     if (typeof argv.minify === 'string') {
