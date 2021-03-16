@@ -98,8 +98,12 @@ module.exports = class extends Generator {
                     '@types/mocha': '^8.2.1'
                 })
             );
-            delete pkg.devDependencies['gulp-tslint'];
-            delete pkg.devDependencies['tslint'];
+            if (pkg.devDependencies['gulp-tslint']) {
+                delete pkg.devDependencies['gulp-tslint'];
+            }
+            if (pkg.devDependencies['tslint']) {
+                delete pkg.devDependencies['tslint'];
+            }
             this.fs.writeJSON(pkg_path, pkg, null, 2);
         }
         if (!upgrade || upgrade) {
@@ -110,8 +114,12 @@ module.exports = class extends Generator {
                     'typedoc': '^0.20.28'
                 })
             );
-            delete pkg.optionalDependencies['jsdoc'];
-            delete pkg.devDependencies['minami'];
+            if (pkg.optionalDependencies['jsdoc']) {
+                delete pkg.optionalDependencies['jsdoc'];
+            }
+            if (pkg.devDependencies['minami']) {
+                delete pkg.devDependencies['minami'];
+            }
             this.fs.writeJSON(pkg_path, pkg, null, 2);
         }
         if (!upgrade || upgrade) {

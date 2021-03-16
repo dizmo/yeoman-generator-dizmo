@@ -82,7 +82,9 @@ module.exports = class extends Generator {
                     'tmp': '^0.2.1'
                 })
             );
-            delete pkg.devDependencies['gulp-eslint'];
+            if (pkg.devDependencies['gulp-eslint']) {
+                delete pkg.devDependencies['gulp-eslint'];
+            }
             this.fs.writeJSON(pkg_path, pkg, null, 2);
         }
         if (!upgrade || upgrade) {

@@ -381,6 +381,12 @@ module.exports = class extends Generator {
                     'webpack-obfuscator': '^3.3.0'
                 })
             );
+            if (pkg.optionalDependencies['closure-webpack-plugin']) {
+                delete pkg.optionalDependencies['closure-webpack-plugin'];
+            }
+            if (pkg.optionalDependencies['google-closure-compiler']) {
+                delete pkg.optionalDependencies['google-closure-compiler'];
+            }
             pkg.scripts = sort(
                 lodash.assign(pkg.scripts, {
                     'build': 'node ./gulp/tools/run-task.js',
