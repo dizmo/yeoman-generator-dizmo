@@ -117,8 +117,8 @@ module.exports = class extends Generator {
             if (pkg.optionalDependencies['jsdoc']) {
                 delete pkg.optionalDependencies['jsdoc'];
             }
-            if (pkg.devDependencies['minami']) {
-                delete pkg.devDependencies['minami'];
+            if (pkg.optionalDependencies['minami']) {
+                delete pkg.optionalDependencies['minami'];
             }
             this.fs.writeJSON(pkg_path, pkg, null, 2);
         }

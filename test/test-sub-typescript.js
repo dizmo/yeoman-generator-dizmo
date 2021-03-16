@@ -176,7 +176,6 @@ describe('generator-dizmo:sub-typescript', function () {
                     'javascript-obfuscator': '^2.10.7',
                     'jsdom': '^16.4.0',
                     'jsdom-global': '^3.0.2',
-                    'minami': '^1.2.3',
                     'mocha': '^8.3.0',
                     'pump': '^3.0.0',
                     'typedoc': '^0.20.28',
