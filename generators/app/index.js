@@ -320,7 +320,8 @@ module.exports = class extends Generator {
             const pkg = this.fs.readJSON(pkg_path);
             pkg.dependencies = sort(
                 lodash.assign(pkg.dependencies, {
-                    '@babel/polyfill': '^7.12.1'
+                    '@babel/polyfill': '^7.12.1',
+                    '@dizmo/dizmo.js': '^1.4.29'
                 })
             );
             pkg.devDependencies = sort(

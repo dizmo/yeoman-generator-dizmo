@@ -126,7 +126,8 @@ describe('generator-dizmo:app', function () {
                     }
                 },
                 'dependencies': {
-                    '@babel/polyfill': '^7.12.1'
+                    '@babel/polyfill': '^7.12.1',
+                    '@dizmo/dizmo.js': '^1.4.29'
                 },
                 'devDependencies': {
                     '@babel/core': '^7.13.8',

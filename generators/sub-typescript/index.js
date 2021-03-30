@@ -74,11 +74,6 @@ module.exports = class extends Generator {
         if (!upgrade || upgrade) {
             const pkg_path = this.destinationPath('package.json');
             const pkg = this.fs.readJSON(pkg_path);
-            pkg.dependencies = sort(
-                lodash.assign(pkg.dependencies, {
-                    '@dizmo/dizmo.js': '^1.4.24'
-                })
-            );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
                     '@typescript-eslint/eslint-plugin': '4.16.1',
