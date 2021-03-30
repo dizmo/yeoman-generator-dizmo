@@ -76,21 +76,21 @@ module.exports = class extends Generator {
             const pkg = this.fs.readJSON(pkg_path);
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
-                    '@typescript-eslint/eslint-plugin': '4.16.1',
-                    '@typescript-eslint/parser': '4.16.1'
+                    '@typescript-eslint/eslint-plugin': '4.20.0',
+                    '@typescript-eslint/parser': '4.20.0'
                 })
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
-                    'ts-loader': '^8.0.17',
-                    'typescript': '^4.2.2'
+                    'ts-loader': '^8.1.0',
+                    'typescript': '^4.2.3'
                 })
             );
             pkg.optionalDependencies = sort(
                 lodash.assign(pkg.optionalDependencies, {
                     '@types/chai': '^4.2.15',
                     '@types/chai-spies': '^1.0.3',
-                    '@types/mocha': '^8.2.1'
+                    '@types/mocha': '^8.2.2'
                 })
             );
             if (pkg.devDependencies['gulp-tslint']) {
@@ -106,7 +106,7 @@ module.exports = class extends Generator {
             const pkg = this.fs.readJSON(pkg_path);
             pkg.optionalDependencies = sort(
                 lodash.assign(pkg.optionalDependencies, {
-                    'typedoc': '^0.20.28'
+                    'typedoc': '^0.20.34'
                 })
             );
             if (pkg.optionalDependencies['jsdoc']) {
