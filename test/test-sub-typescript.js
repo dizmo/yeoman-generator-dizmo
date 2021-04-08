@@ -132,13 +132,13 @@ describe('generator-dizmo:sub-typescript', function () {
                 },
                 'dependencies': {
                     '@babel/polyfill': '^7.12.1',
-                    '@dizmo/dizmo.js': '^1.4.32'
+                    '@dizmo/dizmo.js': '^1.4.33'
                 },
                 'devDependencies': {
-                    '@babel/core': '^7.13.14',
-                    '@babel/preset-env': '^7.13.12',
-                    '@typescript-eslint/eslint-plugin': '4.20.0',
-                    '@typescript-eslint/parser': '4.20.0',
+                    '@babel/core': '^7.13.15',
+                    '@babel/preset-env': '^7.13.15',
+                    '@typescript-eslint/eslint-plugin': '4.21.0',
+                    '@typescript-eslint/parser': '4.21.0',
                     'ansi-colors': '^4.1.1',
                     'babel-loader': '^8.2.2',
                     'css-loader': '^5.2.0',
@@ -161,13 +161,13 @@ describe('generator-dizmo:sub-typescript', function () {
                     'sass-loader': '^11.0.1',
                     'style-loader': '^2.0.0',
                     'ts-loader': '^8.1.0',
-                    'typescript': '^4.2.3',
+                    'typescript': '^4.2.4',
                     'webpack': '^5.31.0',
                     'webpack-stream': '^6.1.2',
                     'yargs': '^16.2.0'
                 },
                 'optionalDependencies': {
-                    '@types/chai': '^4.2.15',
+                    '@types/chai': '^4.2.16',
                     '@types/chai-spies': '^1.0.3',
                     '@types/mocha': '^8.2.2',
                     'chai': '^4.3.4',
@@ -178,7 +178,7 @@ describe('generator-dizmo:sub-typescript', function () {
                     'jsdom-global': '^3.0.2',
                     'mocha': '^8.3.2',
                     'pump': '^3.0.0',
-                    'typedoc': '^0.20.34',
+                    'typedoc': '^0.20.35',
                     'webpack-cli': '^4.6.0',
                     'webpack-obfuscator': '^3.3.0'
                 },

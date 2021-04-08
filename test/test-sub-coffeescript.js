@@ -132,11 +132,11 @@ describe('generator-dizmo:sub-coffeescript', function () {
                 },
                 'dependencies': {
                     '@babel/polyfill': '^7.12.1',
-                    '@dizmo/dizmo.js': '^1.4.32'
+                    '@dizmo/dizmo.js': '^1.4.33'
                 },
                 'devDependencies': {
-                    '@babel/core': '^7.13.14',
-                    '@babel/preset-env': '^7.13.12',
+                    '@babel/core': '^7.13.15',
+                    '@babel/preset-env': '^7.13.15',
                     'ansi-colors': '^4.1.1',
                     'babel-loader': '^8.2.2',
                     'coffee-loader': '^2.0.0',

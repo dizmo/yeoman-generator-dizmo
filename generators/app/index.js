@@ -321,13 +321,13 @@ module.exports = class extends Generator {
             pkg.dependencies = sort(
                 lodash.assign(pkg.dependencies, {
                     '@babel/polyfill': '^7.12.1',
-                    '@dizmo/dizmo.js': '^1.4.32'
+                    '@dizmo/dizmo.js': '^1.4.33'
                 })
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
-                    '@babel/core': '^7.13.14',
-                    '@babel/preset-env': '^7.13.12'
+                    '@babel/core': '^7.13.15',
+                    '@babel/preset-env': '^7.13.15'
                 })
             );
             pkg.devDependencies = sort(
