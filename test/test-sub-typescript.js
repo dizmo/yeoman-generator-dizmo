@@ -132,7 +132,7 @@ describe('generator-dizmo:sub-typescript', function () {
                 },
                 'dependencies': {
                     '@babel/polyfill': '^7.12.1',
-                    '@dizmo/dizmo.js': '^1.4.29'
+                    '@dizmo/dizmo.js': '^1.4.32'
                 },
                 'devDependencies': {
                     '@babel/core': '^7.13.14',
@@ -162,7 +162,7 @@ describe('generator-dizmo:sub-typescript', function () {
                     'style-loader': '^2.0.0',
                     'ts-loader': '^8.1.0',
                     'typescript': '^4.2.3',
-                    'webpack': '^5.28.0',
+                    'webpack': '^5.31.0',
                     'webpack-stream': '^6.1.2',
                     'yargs': '^16.2.0'
                 },
@@ -173,7 +173,7 @@ describe('generator-dizmo:sub-typescript', function () {
                     'chai': '^4.3.4',
                     'chai-spies': '^1.0.0',
                     'ignore-styles': '^5.0.1',
-                    'javascript-obfuscator': '^2.11.0',
+                    'javascript-obfuscator': '^2.11.1',
                     'jsdom': '^16.5.2',
                     'jsdom-global': '^3.0.2',
                     'mocha': '^8.3.2',
