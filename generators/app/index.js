@@ -333,11 +333,11 @@ module.exports = class extends Generator {
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
                     'babel-loader': '^8.2.2',
-                    'css-loader': '^5.2.0',
+                    'css-loader': '^5.2.1',
                     'sass': '^1.32.8',
                     'sass-loader': '^11.0.1',
                     'style-loader': '^2.0.0',
-                    'webpack': '^5.31.0',
+                    'webpack': '^5.31.2',
                     'webpack-stream': '^6.1.2'
                 })
             );
@@ -352,14 +352,13 @@ module.exports = class extends Generator {
                     'gulp-replace': '^1.0.0',
                     'gulp-dart-sass': '^1.0.2',
                     'gulp-sourcemaps': '^3.0.0',
-                    'gulp-ver': '^0.1.0',
                     'gulp-zip': '^5.1.0'
                 })
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
                     'ansi-colors': '^4.1.1',
-                    'eslint': '^7.23.0',
+                    'eslint': '^7.24.0',
                     'fancy-log': '^1.3.3',
                     'request': '^2.88.2',
                     'rimraf': '^3.0.2',
@@ -373,7 +372,7 @@ module.exports = class extends Generator {
                     'ignore-styles': '^5.0.1',
                     'javascript-obfuscator': '^2.11.1',
                     'jsdoc': '^3.6.6',
-                    'jsdom': '^16.5.2',
+                    'jsdom': '^16.5.3',
                     'jsdom-global': '^3.0.2',
                     'minami': '^1.2.3',
                     'mocha': '^8.3.2',
