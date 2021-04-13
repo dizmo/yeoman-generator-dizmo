@@ -39,7 +39,7 @@ describe('<%= dizmoName %>', () => {
 });
 describe('<%= dizmoName %>', () => {
     before(() => {
-        chai.spy.on(dizmo, 'subscribeToAttribute'/*, () => 'UUID'*/);
+        dizmo.subscribeToAttribute = chai.spy(/*() => 'UUID'*/);
         const done = document.createElement('button');
         done.setAttribute('id', 'done'); document.body.append(done);
         document.dispatchEvent(new Event('dizmoready'));
