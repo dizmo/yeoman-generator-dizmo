@@ -132,7 +132,7 @@ describe('generator-dizmo:sub-coffeescript', function () {
                 },
                 'dependencies': {
                     '@babel/polyfill': '^7.12.1',
-                    '@dizmo/dizmo.js': '^1.4.33'
+                    '@dizmo/dizmo.js': '^1.4.34'
                 },
                 'devDependencies': {
                     '@babel/core': '^7.13.15',
@@ -159,7 +159,7 @@ describe('generator-dizmo:sub-coffeescript', function () {
                     'sass': '^1.32.8',
                     'sass-loader': '^11.0.1',
                     'style-loader': '^2.0.0',
-                    'webpack': '^5.31.2',
+                    'webpack': '^5.32.0',
                     'webpack-stream': '^6.1.2',
                     'yargs': '^16.2.0'
                 },
@@ -167,7 +167,7 @@ describe('generator-dizmo:sub-coffeescript', function () {
                     'chai': '^4.3.4',
                     'chai-spies': '^1.0.0',
                     'ignore-styles': '^5.0.1',
-                    'javascript-obfuscator': '^2.11.1',
+                    'javascript-obfuscator': '^2.12.0',
                     'jsdoc': '^3.6.6',
                     'jsdom': '^16.5.3',
                     'jsdom-global': '^3.0.2',
