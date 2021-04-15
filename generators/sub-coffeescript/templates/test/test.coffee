@@ -36,7 +36,7 @@ describe '<%= dizmoName %>', () ->
 
 describe '<%= dizmoName %>', () ->
     before () ->
-        dizmo.subscribeToAttribute = chai.spy() ## -> 'UUID'
+        chai.spy.on dizmo, 'subscribeToAttribute' ##, () -> 'UUID'
         done = document.createElement 'button'
         done.setAttribute 'id', 'done'; document.body.append done
         document.dispatchEvent new Event('dizmoready')
