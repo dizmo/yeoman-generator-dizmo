@@ -132,7 +132,7 @@ describe('generator-dizmo:sub-coffeescript', function () {
                 },
                 'dependencies': {
                     '@babel/polyfill': '^7.12.1',
-                    '@dizmo/dizmo.js': '^1.4.34'
+                    '@dizmo/dizmo.js': '^1.4.38'
                 },
                 'devDependencies': {
                     '@babel/core': '^7.13.15',
@@ -159,7 +159,7 @@ describe('generator-dizmo:sub-coffeescript', function () {
                     'sass': '^1.32.8',
                     'sass-loader': '^11.0.1',
                     'style-loader': '^2.0.0',
-                    'webpack': '^5.32.0',
+                    'webpack': '^5.33.2',
                     'webpack-stream': '^6.1.2',
                     'yargs': '^16.2.0'
                 },

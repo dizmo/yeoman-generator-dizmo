@@ -321,7 +321,7 @@ module.exports = class extends Generator {
             pkg.dependencies = sort(
                 lodash.assign(pkg.dependencies, {
                     '@babel/polyfill': '^7.12.1',
-                    '@dizmo/dizmo.js': '^1.4.34'
+                    '@dizmo/dizmo.js': '^1.4.38'
                 })
             );
             pkg.devDependencies = sort(
@@ -337,7 +337,7 @@ module.exports = class extends Generator {
                     'sass': '^1.32.8',
                     'sass-loader': '^11.0.1',
                     'style-loader': '^2.0.0',
-                    'webpack': '^5.32.0',
+                    'webpack': '^5.33.2',
                     'webpack-stream': '^6.1.2'
                 })
             );
