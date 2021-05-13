@@ -140,7 +140,8 @@ module.exports = class extends Generator {
                     self.config.get('domain') || self._domain();
                 const bundle_id =
                     `${domain}.${lodash.snakeCase(prop.dizmoName)}`;
-                return self.bundleId || bundle_id;
+                return (
+                    self.bundleId || bundle_id).toLowerCase();
             },
             when: function (prop) {
                 if (pkg && pkg.dizmo && pkg.dizmo.settings &&
@@ -154,6 +155,9 @@ module.exports = class extends Generator {
                     return false;
                 }
                 return true;
+            },
+            validate: function (value) {
+                return !value.match(/[A-Z]/);
             }
         });
         prompts.push({
