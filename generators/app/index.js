@@ -472,7 +472,7 @@ module.exports = class extends Generator {
                 );
             }
         }
-        this.conflicter.force = upgrade;
+        this.env.conflicter.force = upgrade;
     }
     end() {
         const pkg = this.fs.readJSON(
