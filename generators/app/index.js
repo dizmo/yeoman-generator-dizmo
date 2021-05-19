@@ -324,8 +324,9 @@ module.exports = class extends Generator {
             const pkg = this.fs.readJSON(pkg_path);
             pkg.dependencies = sort(
                 lodash.assign(pkg.dependencies, {
-                    '@babel/polyfill': '^7.12.1',
-                    '@dizmo/dizmo.js': '^1.4.45'
+                    '@dizmo/dizmo.js': '^1.4.45',
+                    'core-js': '^3.12.1',
+                    'regenerator-runtime': '^0.13.7'
                 })
             );
             pkg.devDependencies = sort(

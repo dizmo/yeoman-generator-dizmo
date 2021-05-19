@@ -1,7 +1,7 @@
 const { resolve } = require('path');
 module.exports = {
     entry: {
-        main: ['@babel/polyfill', './source/index.ts']
+        main: ['core-js/stable', 'regenerator-runtime/runtime', './source/index.ts']
     },
     module: {
         rules: [{

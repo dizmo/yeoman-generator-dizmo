@@ -131,8 +131,9 @@ describe('generator-dizmo:sub-typescript', function () {
                     }
                 },
                 'dependencies': {
-                    '@babel/polyfill': '^7.12.1',
-                    '@dizmo/dizmo.js': '^1.4.45'
+                    '@dizmo/dizmo.js': '^1.4.45',
+                    'core-js': '^3.12.1',
+                    'regenerator-runtime': '^0.13.7'
                 },
                 'devDependencies': {
                     '@babel/core': '^7.14.3',
