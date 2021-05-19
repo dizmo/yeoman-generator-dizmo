@@ -155,7 +155,6 @@ describe('generator-dizmo:sub-typescript', function () {
                     'gulp-replace': '^1.1.3',
                     'gulp-sourcemaps': '^3.0.0',
                     'gulp-zip': '^5.1.0',
-                    'request': '^2.88.2',
                     'rimraf': '^3.0.2',
                     'sass': '^1.32.13',
                     'sass-loader': '^11.1.1',
@@ -178,6 +177,7 @@ describe('generator-dizmo:sub-typescript', function () {
                     'jsdom-global': '^3.0.2',
                     'mocha': '^8.4.0',
                     'pump': '^3.0.0',
+                    'request': '^2.88.2',
                     'typedoc': '^0.20.36',
                     'webpack-cli': '^4.7.0',
                     'webpack-obfuscator': '^3.3.1'

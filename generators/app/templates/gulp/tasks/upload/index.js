@@ -1,10 +1,10 @@
+const cli = require('../../tools/cli.js');
 const pkg = require('../../package.js');
 const ansi_colors = require('ansi-colors');
 const assert = require('assert');
 const fancy_log = require('fancy-log');
 const fs = require('fs');
 const gulp = require('gulp');
-const request = require('request');
 
 const info = (...args) => setTimeout(
     () => fancy_log(ansi_colors.green.bold(...args)), 0);
@@ -13,7 +13,8 @@ const warn = (...args) => setTimeout(
 const error = (...args) => setTimeout(
     () => fancy_log(ansi_colors.red.bold(...args)), 0);
 
-gulp.task('upload:send', (done) => {
+gulp.task('upload:send', async (done) => {
+    const request = await cli.npm_i('request');
     let host = process.env.DZM_STORE_HOST;
     let user = process.env.DZM_STORE_USER;
     let pass = process.env.DZM_STORE_PASS;

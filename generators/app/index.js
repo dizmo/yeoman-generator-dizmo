@@ -365,7 +365,6 @@ module.exports = class extends Generator {
                     'ansi-colors': '^4.1.1',
                     'eslint': '^7.26.0',
                     'fancy-log': '^1.3.3',
-                    'request': '^2.88.2',
                     'rimraf': '^3.0.2',
                     'yargs': '^17.0.1'
                 })
@@ -382,6 +381,7 @@ module.exports = class extends Generator {
                     'minami': '^1.2.3',
                     'mocha': '^8.4.0',
                     'pump': '^3.0.0',
+                    'request': '^2.88.2',
                     'webpack-cli': '^4.7.0',
                     'webpack-obfuscator': '^3.3.1'
                 })
