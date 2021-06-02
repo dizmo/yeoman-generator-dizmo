@@ -48,6 +48,10 @@
 
     Also note, that the _old_ default stylesheet at `./style/style.scss` (under the `src` folder) has been moved and renamed to `./styles/styles.scss` (to follow the same naming pattern as in dizmoWeb). Upon an upgrade of the project the old default stylesheet will be automatically moved and renamed accordingly.
 
+* Support for checking outdated generator:
+
+    When running `npm run build` then a `npm run prebuild` step is executed, where an `npm outdated` check is perfomed on `yo` and `@dizmo/generator-dizmo`.
+
 ## v9.y.z
 
 ### MAJOR CHANGES

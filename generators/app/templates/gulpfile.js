@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 
+require('./gulp/tasks/outdated');
 require('./gulp/tasks/lint');
 require('./gulp/tasks/clean');
 require('./gulp/tasks/build');

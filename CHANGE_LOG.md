@@ -1,5 +1,11 @@
 # CHANGE LOG
 
+## v10.8.z
+
+* Support for checking outdated generator:
+
+    When running `npm run build` then a `npm run prebuild` step is executed, where an `npm outdated` check is perfomed on `yo` and `@dizmo/generator-dizmo`.
+
 ## v10.7.z
 
 * Support for unit testing:

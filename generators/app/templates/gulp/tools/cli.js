@@ -6,11 +6,16 @@ const arg = (key, lhs, rhs) => (fallback, { argv } = require('yargs')) => {
     return value ? lhs === undefined ? value : lhs : rhs;
 };
 const run = (command, ...args) => (options = {}) =>
-    new Promise((resolve, reject) => spawn(command, args, {
-        shell: false, stdio: 'inherit', ...options
-    }).on('exit', code => {
-        return (code === 0 ? resolve : reject)(code);
-    })
+    new Promise((resolve, reject) =>{
+        const child = spawn(command, args, {
+            shell: false, stdio: 'inherit', ...options
+        }).on('exit', code => {
+            return (code === 0 ? resolve : reject)(code);
+        });
+        if (child.stdout) child.stdout.on('data', data => {
+            resolve(data.toString('utf8'));
+        });
+    }
 );
 const npx = (...args) => run('npx', ...args)({
     stdio: 'inherit'

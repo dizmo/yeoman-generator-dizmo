@@ -394,6 +394,7 @@ module.exports = class extends Generator {
             }
             pkg.scripts = sort(
                 lodash.assign(pkg.scripts, {
+                    'prebuild': 'node ./gulp/tools/run-task.js outdated',
                     'build': 'node ./gulp/tools/run-task.js',
                     'clean': 'node ./gulp/tools/run-task.js clean',
                     'deploy': 'node ./gulp/tools/run-task.js deploy',
