@@ -6,12 +6,7 @@ const npm_config = (...args) => cli.run('npm', 'config', ...args)({
     stdio: 'pipe'
 });
 const recheck = (key, delta=86400000) => async (now) => {
-    let epoch = await npm_config('get', `${key}:epoch`);
-    try {
-        epoch = parseInt(epoch);
-    } catch (ex) {
-        epoch = now;
-    }
+    const epoch = parseInt(await npm_config('get', `${key}:epoch`)) || 0;
     if (now - epoch > delta) {
         await npm_config('set', `${key}:epoch=${now}`);
         return true;
