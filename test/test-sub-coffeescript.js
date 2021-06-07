@@ -60,8 +60,8 @@ describe('generator-dizmo:sub-coffeescript', function () {
                 'my-dizmo/gulp/tasks/document/watch.js',
                 'my-dizmo/gulp/tasks/lint',
                 'my-dizmo/gulp/tasks/lint/index.js',
-                'my-dizmo/gulp/tasks/outdated',
-                'my-dizmo/gulp/tasks/outdated/index.js',
+                'my-dizmo/gulp/tasks/upgrade-check',
+                'my-dizmo/gulp/tasks/upgrade-check/index.js',
                 'my-dizmo/gulp/tasks/upload',
                 'my-dizmo/gulp/tasks/upload/index.js',
                 'my-dizmo/gulp/tasks/watch',
@@ -188,7 +188,7 @@ describe('generator-dizmo:sub-coffeescript', function () {
                     'url': ''
                 },
                 'scripts': {
-                    'prebuild': 'node ./gulp/tools/run-task.js outdated',
+                    'prebuild': 'node ./gulp/tools/run-task.js upgrade-check',
                     'build': 'node ./gulp/tools/run-task.js',
                     'clean': 'node ./gulp/tools/run-task.js clean',
                     'deploy': 'node ./gulp/tools/run-task.js deploy',
