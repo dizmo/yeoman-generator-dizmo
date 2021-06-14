@@ -27,10 +27,19 @@ const check = async (flag) => {
     }
     return null;
 };
-const print = (json) => {
+const print = (json, text = 'Generator Upgrade Available', box = {
+    width: 57, padding: (offset) => (box.width - text.length) / 2 + (
+        offset ? (box.width - text.length) % 2 : 0
+    )
+}) => {
     if (typeof json !== 'object' || json === null) {
         return;
     }
+    fancy_log(`┌${'─'.repeat(box.width)}┐`);
+    fancy_log(`│${
+        ' '.repeat(box.padding(0)) + ansi_colors.yellow.bold(text) + ' '.repeat(box.padding(1))
+    }│`);
+    fancy_log(`└${'─'.repeat(box.width)}┘`);
     for (const [key, item] of Object.entries(json).reverse()) {
         fancy_log(`> ${key} @${item.current}, but latest @${item.latest}; run:`);
         fancy_log(ansi_colors.yellow.bold(`npm upgrade -g ${key}`));
