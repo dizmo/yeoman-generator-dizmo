@@ -324,25 +324,25 @@ module.exports = class extends Generator {
             const pkg = this.fs.readJSON(pkg_path);
             pkg.dependencies = sort(
                 lodash.assign(pkg.dependencies, {
-                    '@dizmo/dizmo.js': '^1.4.45',
-                    'core-js': '^3.12.1',
+                    '@dizmo/dizmo.js': '^1.4.48',
+                    'core-js': '^3.14.0',
                     'regenerator-runtime': '^0.13.7'
                 })
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
-                    '@babel/core': '^7.14.3',
-                    '@babel/preset-env': '^7.14.2'
+                    '@babel/core': '^7.14.5',
+                    '@babel/preset-env': '^7.14.5'
                 })
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
                     'babel-loader': '^8.2.2',
-                    'css-loader': '^5.2.4',
-                    'sass': '^1.32.13',
-                    'sass-loader': '^11.1.1',
+                    'css-loader': '^5.2.6',
+                    'sass': '^1.34.1',
+                    'sass-loader': '^12.1.0',
                     'style-loader': '^2.0.0',
-                    'webpack': '^5.37.1',
+                    'webpack': '^5.38.1',
                     'webpack-stream': '^6.1.2'
                 })
             );
@@ -363,7 +363,7 @@ module.exports = class extends Generator {
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
                     'ansi-colors': '^4.1.1',
-                    'eslint': '^7.26.0',
+                    'eslint': '^7.28.0',
                     'fancy-log': '^1.3.3',
                     'rimraf': '^3.0.2',
                     'yargs': '^17.0.1'
@@ -374,16 +374,16 @@ module.exports = class extends Generator {
                     'chai': '^4.3.4',
                     'chai-spies': '^1.0.0',
                     'ignore-styles': '^5.0.1',
-                    'javascript-obfuscator': '^2.12.0',
+                    'javascript-obfuscator': '^2.15.2',
                     'jsdoc': '^3.6.7',
-                    'jsdom': '^16.5.3',
+                    'jsdom': '^16.6.0',
                     'jsdom-global': '^3.0.2',
                     'minami': '^1.2.3',
-                    'mocha': '^8.4.0',
+                    'mocha': '^9.0.0',
                     'pump': '^3.0.0',
                     'request': '^2.88.2',
-                    'webpack-cli': '^4.7.0',
-                    'webpack-obfuscator': '^3.3.1'
+                    'webpack-cli': '^4.7.2',
+                    'webpack-obfuscator': '^3.3.2'
                 })
             );
             if (pkg.optionalDependencies['closure-webpack-plugin']) {
