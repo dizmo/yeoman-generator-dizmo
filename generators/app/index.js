@@ -275,9 +275,11 @@ module.exports = class extends Generator {
             this.options.upgrade && fs.existsSync('package.json')
         );
         if (!upgrade || upgrade) {
-            this.fs.copy(
+            this.fs.copyTpl(
                 this.templatePath('gulp/'),
-                this.destinationPath('gulp/')
+                this.destinationPath('gulp/'), {
+                    generator_name: this._generator_name()
+                }
             );
             this.fs.copy(
                 this.templatePath('gulpfile.js'),
@@ -331,7 +333,7 @@ module.exports = class extends Generator {
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
-                    '@babel/core': '^7.14.5',
+                    '@babel/core': '^7.14.6',
                     '@babel/preset-env': '^7.14.5'
                 })
             );
@@ -339,10 +341,10 @@ module.exports = class extends Generator {
                 lodash.assign(pkg.devDependencies, {
                     'babel-loader': '^8.2.2',
                     'css-loader': '^5.2.6',
-                    'sass': '^1.34.1',
+                    'sass': '^1.35.0',
                     'sass-loader': '^12.1.0',
                     'style-loader': '^2.0.0',
-                    'webpack': '^5.38.1',
+                    'webpack': '^5.39.0',
                     'webpack-stream': '^6.1.2'
                 })
             );
@@ -602,6 +604,16 @@ module.exports = class extends Generator {
         } catch (_) {
             return 'my.domain';
         }
+    }
+    _generator_name() {
+        if (this.env &&
+            this.env._rootGenerator &&
+            this.env._rootGenerator.options &&
+            this.env._rootGenerator.options.namespace
+        ) {
+            return this.env._rootGenerator.options.namespace;
+        }
+        return '@dizmo/dizmo';
     }
 };
 function sort(object) {

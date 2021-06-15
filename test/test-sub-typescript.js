@@ -138,7 +138,7 @@ describe('generator-dizmo:sub-typescript', function () {
                     'regenerator-runtime': '^0.13.7'
                 },
                 'devDependencies': {
-                    '@babel/core': '^7.14.5',
+                    '@babel/core': '^7.14.6',
                     '@babel/preset-env': '^7.14.5',
                     '@typescript-eslint/eslint-plugin': '4.26.1',
                     '@typescript-eslint/parser': '4.26.1',
@@ -158,12 +158,12 @@ describe('generator-dizmo:sub-typescript', function () {
                     'gulp-sourcemaps': '^3.0.0',
                     'gulp-zip': '^5.1.0',
                     'rimraf': '^3.0.2',
-                    'sass': '^1.34.1',
+                    'sass': '^1.35.0',
                     'sass-loader': '^12.1.0',
                     'style-loader': '^2.0.0',
                     'ts-loader': '^9.2.3',
                     'typescript': '^4.3.2',
-                    'webpack': '^5.38.1',
+                    'webpack': '^5.39.0',
                     'webpack-stream': '^6.1.2',
                     'yargs': '^17.0.1'
                 },

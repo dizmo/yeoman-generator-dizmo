@@ -45,7 +45,9 @@ const print = (json, text = 'Generator Upgrade Available', box = {
         fancy_log(ansi_colors.yellow.bold(`npm upgrade -g ${key}`));
     }
     fancy_log(`> Then to upgrade project run:`);
-    fancy_log(ansi_colors.yellow.bold(`yo @dizmo/dizmo --upgrade`));
+    fancy_log(ansi_colors.yellow.bold(
+        `yo <%= generator_name.split(':')[0] %> --upgrade --skip-install`
+    ));
     fancy_log(`> For further information see:`);
     fancy_log(ansi_colors.white.bold(
         `https://www.npmjs.com/package/@dizmo/generator-dizmo#upgrading-the-build-system`
