@@ -278,7 +278,8 @@ module.exports = class extends Generator {
             this.fs.copyTpl(
                 this.templatePath('gulp/'),
                 this.destinationPath('gulp/'), {
-                    generator_name: this._generator_name()
+                    generator_name: this._generator_name(),
+                    generator_namespace: this._generator_namespace(),
                 }
             );
             this.fs.copy(
@@ -606,6 +607,11 @@ module.exports = class extends Generator {
         }
     }
     _generator_name() {
+        const namespace = this._generator_namespace();
+        const [ lhs, rhs ] = namespace.split('/');
+        return `${lhs}/generator-${rhs}`;
+    }
+    _generator_namespace() {
         if (this.env &&
             this.env._rootGenerator &&
             this.env._rootGenerator.options &&

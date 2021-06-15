@@ -20,7 +20,7 @@ const if_check = (key, delta = 86400000) => async (now) => {
 const check = async (flag) => {
     if (flag) try {
         return JSON.parse(await npm_outdated(
-            'yo', '@dizmo/generator-dizmo', '-g', '--json'
+            'yo', '<%= generator_name.split(":")[0] %>', '-g', '--json'
         ));
     } catch (ex) {
         console.error(ex);
@@ -46,7 +46,7 @@ const print = (json, text = 'Generator Upgrade Available', box = {
     }
     fancy_log(`> Then to upgrade project run:`);
     fancy_log(ansi_colors.yellow.bold(
-        `yo <%= generator_name.split(':')[0] %> --upgrade --skip-install`
+        `yo <%= generator_namespace.split(":")[0] %> --upgrade --skip-install`
     ));
     fancy_log(`> For further information see:`);
     fancy_log(ansi_colors.white.bold(
