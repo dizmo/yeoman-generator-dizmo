@@ -23,7 +23,7 @@ const npx = (...args) => run('npx', ...args)({
 const npx_q = (...args) => run('npx', '--quiet', ...args)({
     stdio: 'ignore'
 });
-const npm = (...args) => run('npm', ...args)({
+const npm = (...args) => run('npm', '--legacy-peer-deps', ...args)({
     stdio: 'ignore'
 });
 const npm_i = (package, ...args) =>
