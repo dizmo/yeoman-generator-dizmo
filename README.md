@@ -614,6 +614,10 @@ yo @dizmo/dizmo --git --typescript
 
 Further, there are sub-generators for other projects (like [@dizmo/generator-dizmo-react] and [@dizmo/generator-dizmo-vue]); search the [NPM] registry for `generator-dizmo` to get a list of possible sub-generators.
 
+### Family of Generators
+
+![](./docs/generator-family.svg)
+
 [@dizmo/generator-dizmo-react]: https://www.npmjs.com/package/@dizmo/generator-dizmo-react
 [@dizmo/generator-dizmo-vue]: https://www.npmjs.com/package/@dizmo/generator-dizmo-vue
 
