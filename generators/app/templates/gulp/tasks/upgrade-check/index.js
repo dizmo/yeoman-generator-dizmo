@@ -4,10 +4,10 @@ const fancy_log = require('fancy-log');
 const gulp = require('gulp');
 
 const npm_outdated = (...args) => cli.run('npm', 'outdated', ...args)({
-    stdio: 'pipe'
+    stdio: 'pipe', shell: true
 });
 const npm_config = (...args) => cli.run('npm', 'config', ...args)({
-    stdio: 'pipe'
+    stdio: 'pipe', shell: true
 });
 const if_check = (key, delta = 86400000) => async (now) => {
     const epoch = parseInt(await npm_config('get', `${key}:epoch`)) || 0;
