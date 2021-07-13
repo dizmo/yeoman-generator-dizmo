@@ -12,6 +12,7 @@ describe('generator-dizmo:sub-typescript', function () {
             'typescript': true
         }).then(() => {
             assert.file([
+                'my-dizmo',
                 'my-dizmo/assets',
                 'my-dizmo/assets/Icon-dark.svg',
                 'my-dizmo/assets/Icon.svg',
@@ -59,10 +60,16 @@ describe('generator-dizmo:sub-typescript', function () {
                 'my-dizmo/gulp/tasks/document/watch.js',
                 'my-dizmo/gulp/tasks/lint',
                 'my-dizmo/gulp/tasks/lint/index.js',
+                'my-dizmo/gulp/tasks/prebuild',
+                'my-dizmo/gulp/tasks/prebuild/index.js',
+                'my-dizmo/gulp/tasks/test',
+                'my-dizmo/gulp/tasks/test/index.js',
                 'my-dizmo/gulp/tasks/upgrade-check',
                 'my-dizmo/gulp/tasks/upgrade-check/index.js',
                 'my-dizmo/gulp/tasks/upload',
                 'my-dizmo/gulp/tasks/upload/index.js',
+                'my-dizmo/gulp/tasks/version-check',
+                'my-dizmo/gulp/tasks/version-check/index.js',
                 'my-dizmo/gulp/tasks/watch',
                 'my-dizmo/gulp/tasks/watch/index.js',
                 'my-dizmo/gulp/tools',
@@ -91,11 +98,6 @@ describe('generator-dizmo:sub-typescript', function () {
                 'my-dizmo/typedoc.json',
                 'my-dizmo/webpack.config.js',
                 'my-dizmo/webpack.config.test.js',
-                'my-dizmo/.eslintrc.json',
-                'my-dizmo/.info.plist',
-                'my-dizmo/.npmignore',
-                'my-dizmo/.travis.yml',
-                'my-dizmo/.yo-rc.json',
             ]);
             assert.noFile([
                 'my-dizmo/source/index.js'
@@ -191,7 +193,7 @@ describe('generator-dizmo:sub-typescript', function () {
                     'url': ''
                 },
                 'scripts': {
-                    'prebuild': 'node ./gulp/tools/run-task.js upgrade-check',
+                    'prebuild': 'node ./gulp/tools/run-task.js prebuild',
                     'build': 'node ./gulp/tools/run-task.js',
                     'clean': 'node ./gulp/tools/run-task.js clean',
                     'deploy': 'node ./gulp/tools/run-task.js deploy',
