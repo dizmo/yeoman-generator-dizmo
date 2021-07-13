@@ -1,10 +1,16 @@
 # CHANGE LOG
 
+## v10.9.z
+
+* Support for checking Node.js version:
+
+    When running `npm run build` then an `npm run prebuild` step is executed, where an `npm version` check is performed to ensure at least the latest LTS version.
+
 ## v10.8.z
 
 * Support for checking outdated generator:
 
-    When running `npm run build` then a `npm run prebuild` step is executed, where an `npm outdated` check is perfomed on `yo` and `@dizmo/generator-dizmo`.
+    When running `npm run build` then an `npm run prebuild` step is executed, where an `npm outdated` check is performed on `yo` and `@dizmo/generator-dizmo`.
 
 ## v10.7.z
 

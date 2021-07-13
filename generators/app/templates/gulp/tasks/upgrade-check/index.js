@@ -36,9 +36,7 @@ const print = (json, text = 'Generator Upgrade Available', box = {
         return;
     }
     fancy_log(`┌${'─'.repeat(box.width)}┐`);
-    fancy_log(`│${
-        ' '.repeat(box.padding(0)) + ansi_colors.yellow.bold(text) + ' '.repeat(box.padding(1))
-    }│`);
+    fancy_log(`│${' '.repeat(box.padding(0)) + ansi_colors.yellow.bold(text) + ' '.repeat(box.padding(1))}│`);
     fancy_log(`└${'─'.repeat(box.width)}┘`);
     for (const [key, item] of Object.entries(json).reverse()) {
         fancy_log(`> ${key} @${item.current}, but latest @${item.latest}; run:`);
