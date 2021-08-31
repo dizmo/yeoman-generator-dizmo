@@ -36,13 +36,13 @@ describe '<%= dizmoName %>', () ->
 
 describe '<%= dizmoName %>', () ->
     before () ->
-        chai.spy.on dizmo, 'subscribeToAttribute' ##, () -> 'UUID'
+        chai.spy.on dizmo, 'onAttribute' ##, () -> 'UUID'
         done = document.createElement 'button'
         done.setAttribute 'id', 'done'; document.body.append done
         document.dispatchEvent new Event('dizmoready')
 
-    it 'should expect dizmo.subscribeToAttribute to have been called', () ->
-        chai.expect(dizmo.subscribeToAttribute).to.have.been.called()
+    it 'should expect dizmo.onAttribute to have been called', () ->
+        chai.expect(dizmo.onAttribute).to.have.been.called()
 
     it 'should expect done.onclick handler to be a function', () ->
         done = document.getElementById 'done'

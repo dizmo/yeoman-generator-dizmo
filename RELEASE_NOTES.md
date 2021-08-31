@@ -56,6 +56,10 @@
 
     When running `npm run build` then an `npm run prebuild` step is executed, where an `npm version` check is performed to ensure at least the latest LTS version.
 
+* Support for migration deprecated `@dizmo/dizmo.js` method:
+
+    Deprecated methods from `@dizmo/dizmo.js` are upon (generation and) upgrade of a project migrated to the most recent versions (except for *public* properties).
+
 ## v9.y.z
 
 ### MAJOR CHANGES

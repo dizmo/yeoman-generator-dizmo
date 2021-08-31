@@ -42,13 +42,13 @@ describe('<%= dizmoName %>', () => {
 });
 describe('<%= dizmoName %>', () => {
     before(() => {
-        chai.spy.on(dizmo, 'subscribeToAttribute'/*, () => 'UUID'*/);
+        chai.spy.on(dizmo, 'onAttribute'/*, () => 'UUID'*/);
         const done = document.createElement('button') as HTMLElement;
         done.setAttribute('id', 'done'); document.body.append(done);
         document.dispatchEvent(new Event('dizmoready'));
     });
-    it('should expect dizmo.subscribeToAttribute to have been called', () => {
-        chai.expect(dizmo.subscribeToAttribute).to.have.been.called();
+    it('should expect dizmo.onAttribute to have been called', () => {
+        chai.expect(dizmo.onAttribute).to.have.been.called();
     });
     it('should expect done.onclick handler to be a function', () => {
         const done = document.getElementById('done') as HTMLElement;

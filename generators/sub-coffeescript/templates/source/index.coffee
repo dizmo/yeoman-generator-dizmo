@@ -37,7 +37,7 @@ global.i18n onI18n
 # @function
 ###
 export onDizmoReady = ->
-    dizmo.subscribeToAttribute 'settings/framecolor', () ->
+    dizmo.onAttribute 'settings/framecolor', () ->
         front = document.getElementById 'front'
         front.style.color = dizmo.getAdaptiveColor()
     done = document.getElementById 'done'

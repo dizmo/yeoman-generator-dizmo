@@ -41,7 +41,7 @@ global.i18n(onI18n);
  * Handler to be invoked once the dizmo is ready.
  */
 export const onDizmoReady = (): void => {
-    dizmo.subscribeToAttribute('settings/framecolor', () => {
+    dizmo.onAttribute('settings/framecolor', () => {
         const front = document.getElementById('front') as HTMLElement;
         front.style.color = dizmo.getAdaptiveColor();
     });

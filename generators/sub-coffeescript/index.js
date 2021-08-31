@@ -113,11 +113,12 @@ module.exports = class extends Generator {
         }
         this.env.conflicter.force = this.options.force || upgrade;
     }
-    end() {
-        this._mov();
-        this._rim();
+    async end() {
+        await this._mov();
+        await this._mig();
+        await this._rim();
     }
-    _mov() {
+    async _mov() {
         if (fs.existsSync(
             this.destinationPath('src')
         ) && !fs.existsSync(
@@ -139,7 +140,49 @@ module.exports = class extends Generator {
             );
         }
     }
-    _rim() {
+    async _mig() {
+        const rx = (method) => {
+            return new RegExp(`(dizmo|bundle|viewer)\.${method}`, 'g');
+        };
+        const rx_private = (method) => {
+            return new RegExp(`(dizmo|bundle|viewer)\.privateStorage\.${method}`, 'g');
+        };
+        await walk(this.destinationPath('source'), (filepath) => {
+            const script = fs
+                .readFileSync(this.destinationPath(filepath), 'utf8')
+                // unsubscriptions
+                .replace(rx('unsubscribeRemoteHost'), '$1.unsubscribe')
+                .replace(rx('unsubscribeParentChange'), '$1.unsubscribe')
+                .replace(rx('unsubscribeChildren'), '$1.unsubscribe')
+                .replace(rx('unsubscribeDizmoChanged'), '$1.unsubscribe')
+                .replace(rx('unsubscribeBundleChanged'), '$1.unsubscribe')
+                // attributes
+                .replace(rx('getAttribute'), '$1.getAttribute')
+                .replace(rx('setAttribute'), '$1.setAttribute')
+                .replace(rx('deleteAttribute'), '$1.deleteAttribute')
+                .replace(rx('subscribeToAttribute'), '$1.onAttribute')
+                .replace(rx('subscribeToAttributeConditional'), '$1.onAttributeIf')
+                .replace(rx('unsubscribeAttribute'), '$1.unsubscribe')
+                .replace(rx('beginAttributeUpdate'), '$1.beginAttributeUpdate')
+                .replace(rx('endAttributeUpdate'), '$1.endAttributeUpdate')
+                .replace(rx('cacheAttribute'), '$1.cacheAttribute')
+                .replace(rx('uncacheAttribute'), '$1.uncacheAttribute')
+                // private properties
+                .replace(rx_private('getProperty'), '$1.getProperty')
+                .replace(rx_private('setProperty'), '$1.setProperty')
+                .replace(rx_private('deleteProperty'), '$1.deleteProperty')
+                .replace(rx_private('subscribeToProperty'), '$1.onProperty')
+                .replace(rx_private('unsubscribeProperty'), '$1.unsubscribe')
+                .replace(rx_private('beginPropertyUpdate'), '$1.beginPropertyUpdate')
+                .replace(rx_private('endPropertyUpdate'), '$1.endPropertyUpdate')
+                .replace(rx_private('cacheProperty'), '$1.cacheProperty')
+                .replace(rx_private('uncacheProperty'), '$1.uncacheProperty');
+            fs.writeFileSync(
+                this.destinationPath(filepath), script
+            );
+        });
+    }
+    async _rim() {
         rimraf.sync(
             this.destinationPath('.eslintrc.json')
         );
@@ -156,3 +199,38 @@ function sort(object) {
         (a, [k, v]) => { a[k] = v; return a; }, {}
     );
 }
+const walk = async (
+    base, callback, options = {
+        include: /\.coffee$/,
+        exclude: undefined
+    }
+) => {
+    const { access, readdir, lstat } = require('fs').promises;
+    const { join } = require('path');
+    try {
+        await access(base);
+    } catch (ex) {
+        return false;
+    }
+    for (const filename of await readdir(
+        base
+    )) {
+        const subpath = join(base, filename);
+        const stat = await lstat(subpath);
+        if (stat.isDirectory()) {
+            return await walk(subpath, callback, options)
+        }
+        if (options?.include && !filename.match(
+            options?.include
+        )) {
+            continue;
+        }
+        if (options?.exclude && filename.match(
+            options?.exclude
+        )) {
+            continue;
+        }
+        await callback(subpath);
+    }
+    return true;
+};
