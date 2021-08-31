@@ -130,17 +130,17 @@ describe('generator-dizmo:app', function () {
                     }
                 },
                 'dependencies': {
-                    '@dizmo/dizmo.js': '^1.4.48',
-                    'core-js': '^3.14.0',
-                    'regenerator-runtime': '^0.13.7'
+                    '@dizmo/dizmo.js': '^1.4.72',
+                    'core-js': '^3.16.4',
+                    'regenerator-runtime': '^0.13.9'
                 },
                 'devDependencies': {
-                    '@babel/core': '^7.14.6',
-                    '@babel/preset-env': '^7.14.5',
+                    '@babel/core': '^7.15.0',
+                    '@babel/preset-env': '^7.15.0',
                     'ansi-colors': '^4.1.1',
                     'babel-loader': '^8.2.2',
-                    'css-loader': '^5.2.6',
-                    'eslint': '^7.28.0',
+                    'css-loader': '^6.2.0',
+                    'eslint': '^7.32.0',
                     'fancy-log': '^1.3.3',
                     'gulp': '^4.0.2',
                     'gulp-copy': '^4.0.1',
@@ -153,27 +153,27 @@ describe('generator-dizmo:app', function () {
                     'gulp-sourcemaps': '^3.0.0',
                     'gulp-zip': '^5.1.0',
                     'rimraf': '^3.0.2',
-                    'sass': '^1.35.0',
+                    'sass': '^1.38.2',
                     'sass-loader': '^12.1.0',
-                    'style-loader': '^2.0.0',
-                    'webpack': '^5.39.0',
-                    'webpack-stream': '^6.1.2',
-                    'yargs': '^17.0.1'
+                    'style-loader': '^3.2.1',
+                    'webpack': '^5.51.1',
+                    'webpack-stream': '^7.0.0',
+                    'yargs': '^17.1.1'
                 },
                 'optionalDependencies': {
                     'chai': '^4.3.4',
                     'chai-spies': '^1.0.0',
                     'ignore-styles': '^5.0.1',
-                    'javascript-obfuscator': '^2.15.2',
+                    'javascript-obfuscator': '^2.19.0',
                     'jsdoc': '^3.6.7',
-                    'jsdom': '^16.6.0',
+                    'jsdom': '^17.0.0',
                     'jsdom-global': '^3.0.2',
                     'minami': '^1.2.3',
-                    'mocha': '^9.0.0',
+                    'mocha': '^9.1.1',
                     'pump': '^3.0.0',
                     'request': '^2.88.2',
-                    'webpack-cli': '^4.7.2',
-                    'webpack-obfuscator': '^3.3.2'
+                    'webpack-cli': '^4.8.0',
+                    'webpack-obfuscator': '^3.4.1'
                 },
                 'license': 'ISC',
                 'private': true,

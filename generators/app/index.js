@@ -327,26 +327,26 @@ module.exports = class extends Generator {
             const pkg = this.fs.readJSON(pkg_path);
             pkg.dependencies = sort(
                 lodash.assign(pkg.dependencies, {
-                    '@dizmo/dizmo.js': '^1.4.48',
-                    'core-js': '^3.14.0',
-                    'regenerator-runtime': '^0.13.7'
+                    '@dizmo/dizmo.js': '^1.4.72',
+                    'core-js': '^3.16.4',
+                    'regenerator-runtime': '^0.13.9'
                 })
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
-                    '@babel/core': '^7.14.6',
-                    '@babel/preset-env': '^7.14.5'
+                    '@babel/core': '^7.15.0',
+                    '@babel/preset-env': '^7.15.0'
                 })
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
                     'babel-loader': '^8.2.2',
-                    'css-loader': '^5.2.6',
-                    'sass': '^1.35.0',
+                    'css-loader': '^6.2.0',
+                    'sass': '^1.38.2',
                     'sass-loader': '^12.1.0',
-                    'style-loader': '^2.0.0',
-                    'webpack': '^5.39.0',
-                    'webpack-stream': '^6.1.2'
+                    'style-loader': '^3.2.1',
+                    'webpack': '^5.51.1',
+                    'webpack-stream': '^7.0.0'
                 })
             );
             pkg.devDependencies = sort(
@@ -366,10 +366,10 @@ module.exports = class extends Generator {
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
                     'ansi-colors': '^4.1.1',
-                    'eslint': '^7.28.0',
+                    'eslint': '^7.32.0',
                     'fancy-log': '^1.3.3',
                     'rimraf': '^3.0.2',
-                    'yargs': '^17.0.1'
+                    'yargs': '^17.1.1'
                 })
             );
             pkg.optionalDependencies = sort(
@@ -377,16 +377,16 @@ module.exports = class extends Generator {
                     'chai': '^4.3.4',
                     'chai-spies': '^1.0.0',
                     'ignore-styles': '^5.0.1',
-                    'javascript-obfuscator': '^2.15.2',
+                    'javascript-obfuscator': '^2.19.0',
                     'jsdoc': '^3.6.7',
-                    'jsdom': '^16.6.0',
+                    'jsdom': '^17.0.0',
                     'jsdom-global': '^3.0.2',
                     'minami': '^1.2.3',
-                    'mocha': '^9.0.0',
+                    'mocha': '^9.1.1',
                     'pump': '^3.0.0',
                     'request': '^2.88.2',
-                    'webpack-cli': '^4.7.2',
-                    'webpack-obfuscator': '^3.3.2'
+                    'webpack-cli': '^4.8.0',
+                    'webpack-obfuscator': '^3.4.1'
                 })
             );
             if (pkg.optionalDependencies['closure-webpack-plugin']) {
