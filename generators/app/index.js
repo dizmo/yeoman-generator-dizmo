@@ -575,7 +575,9 @@ module.exports = class extends Generator {
         }
     }
     async _mig() {
-        await require('./migrate').call(this);
+        await require('./migrate').call(this, {
+            include: /\.js$/, exclude: /\.(umd|min)\.js$/
+        });
     }
     async _rim() {
         rimraf.sync(
