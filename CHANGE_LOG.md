@@ -4,7 +4,7 @@
 
 * Support for migration deprecated `@dizmo/dizmo.js` method:
 
-    Deprecated methods from `@dizmo/dizmo.js` are upon (generation and) upgrade of a project migrated to the most recent versions (except for *public* properties).
+    Deprecated methods from `@dizmo/dizmo.js` are upon (generation and) upgrade of a project migrated to their most recent versions.
 
 ## v10.9.z
 
