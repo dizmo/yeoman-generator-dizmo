@@ -12,23 +12,20 @@ const rx_public = (method, flags = 'g') => {
 const rx_private = (method, flags = 'g') => {
     return new RegExp(`(dizmo|bundle|viewer)\.privateStorage\.${method}`, flags);
 };
-async function unsubscriptions(options) {
-    await walk(this.destinationPath('source'), (filepath) => {
-        const script = fs
-            .readFileSync(this.destinationPath(filepath), 'utf8')
+async function unsubscriptions(base, options) {
+    await walk(base, (filepath) => {
+        const script = fs.readFileSync(filepath, 'utf8')
             .replace(rx('unsubscribeRemoteHost'), '$1.unsubscribe')
             .replace(rx('unsubscribeParentChange'), '$1.unsubscribe')
             .replace(rx('unsubscribeChildren'), '$1.unsubscribe')
             .replace(rx('unsubscribeDizmoChanged'), '$1.unsubscribe')
             .replace(rx('unsubscribeBundleChanged'), '$1.unsubscribe');
-        fs.writeFileSync(
-            this.destinationPath(filepath), script);
+        fs.writeFileSync(filepath, script);
     }, options);
 }
-async function attributes(options) {
-    await walk(this.destinationPath('source'), (filepath) => {
-        const script = fs
-            .readFileSync(this.destinationPath(filepath), 'utf8')
+async function attributes(base, options) {
+    await walk(base, (filepath) => {
+        const script = fs.readFileSync(filepath, 'utf8')
             .replace(rx('getAttribute'), '$1.getAttribute')
             .replace(rx('setAttribute'), '$1.setAttribute')
             .replace(rx('deleteAttribute'), '$1.deleteAttribute')
@@ -39,14 +36,12 @@ async function attributes(options) {
             .replace(rx('endAttributeUpdate'), '$1.endAttributeUpdate')
             .replace(rx('cacheAttribute'), '$1.cacheAttribute')
             .replace(rx('uncacheAttribute'), '$1.uncacheAttribute');
-        fs.writeFileSync(
-            this.destinationPath(filepath), script);
+        fs.writeFileSync(filepath, script);
     }, options);
 }
-async function private_properties(options) {
-    await walk(this.destinationPath('source'), (filepath) => {
-        const script = fs
-            .readFileSync(this.destinationPath(filepath), 'utf8')
+async function private_properties(base, options) {
+    await walk(base, (filepath) => {
+        const script = fs.readFileSync(filepath, 'utf8')
             .replace(rx_private('getProperty'), '$1.getProperty')
             .replace(rx_private('setProperty'), '$1.setProperty')
             .replace(rx_private('deleteProperty'), '$1.deleteProperty')
@@ -56,12 +51,11 @@ async function private_properties(options) {
             .replace(rx_private('endPropertyUpdate'), '$1.endPropertyUpdate')
             .replace(rx_private('cacheProperty'), '$1.cacheProperty')
             .replace(rx_private('uncacheProperty'), '$1.uncacheProperty');
-        fs.writeFileSync(
-            this.destinationPath(filepath), script);
+        fs.writeFileSync(filepath, script);
     }, options);
 }
-async function public_properties(options) {
-    await walk(this.destinationPath('source'), (filepath) => {
+async function public_properties(base, options) {
+    await walk(base, (filepath) => {
         const replace = (script, method, new_method) => {
             let m, re = rx_public(method);
             while (
@@ -109,8 +103,7 @@ async function public_properties(options) {
                 rx_public(method.toUpperCase()), `$1.publicStorage.${method}`
             );
         };
-        let script = fs
-            .readFileSync(this.destinationPath(filepath), 'utf8');
+        let script = fs.readFileSync(filepath, 'utf8');
         script = replace(script, 'getProperty', '$1.getProperty');
         script = replace(script, 'setProperty', '$1.setProperty');
         script = replace(script, 'deleteProperty', '$1.deleteProperty');
@@ -120,15 +113,18 @@ async function public_properties(options) {
         script = replace(script, 'endPropertyUpdate', '$1.endPropertyUpdate');
         script = replace(script, 'cacheProperty', '$1.cacheProperty');
         script = replace(script, 'uncacheProperty', '$1.uncacheProperty');
-        fs.writeFileSync(
-            this.destinationPath(filepath), script);
+        fs.writeFileSync(filepath, script);
     }, options);
 }
-module.exports = async function (options = {
-    include: /\.js$/, exclude: undefined
-}) {
-    await unsubscriptions.call(this, options);
-    await attributes.call(this, options);
-    await private_properties.call(this, options);
-    await public_properties.call(this, options);
+/**
+ * @param {string} base
+ * @param {include?: RegExp, exclude?: RegExp} options
+ */
+module.exports = async function (
+    base, options
+) {
+    await unsubscriptions(base, options);
+    await attributes(base, options);
+    await private_properties(base, options);
+    await public_properties(base, options);
 };

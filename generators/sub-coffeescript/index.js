@@ -142,8 +142,11 @@ module.exports = class extends Generator {
         }
     }
     async _mig() {
-        await require('../app/migrate').call(this, {
-            include: /\.coffee$/, exclude: /\.(umd|min)\.js$/
+        await require('../app/migrate')(this.destinationPath('source'), {
+            include: /\.(js|coffee)$/, exclude: /\.(umd|min)\.js$/
+        });
+        await require('../app/migrate')(this.destinationPath('test'), {
+            include: /\.(js|coffee)$/, exclude: /\.(umd|min)\.js$/
         });
     }
     async _rim() {

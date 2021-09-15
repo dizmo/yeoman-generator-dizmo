@@ -575,7 +575,10 @@ module.exports = class extends Generator {
         }
     }
     async _mig() {
-        await require('./migrate').call(this, {
+        await require('./migrate')(this.destinationPath('source'), {
+            include: /\.js$/, exclude: /\.(umd|min)\.js$/
+        });
+        await require('./migrate')(this.destinationPath('test'), {
             include: /\.js$/, exclude: /\.(umd|min)\.js$/
         });
     }

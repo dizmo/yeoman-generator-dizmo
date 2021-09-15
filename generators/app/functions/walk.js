@@ -1,11 +1,10 @@
+const { access, readdir, lstat } = require('fs').promises;
+const { join } = require('path');
 module.exports = async function walk(
     base, callback, options = {
-        include: /\.js$/,
-        exclude: undefined
+        include: /\.js$/, exclude: undefined
     }
 ) {
-    const { access, readdir, lstat } = require('fs').promises;
-    const { join } = require('path');
     try {
         await access(base);
     } catch (ex) {
