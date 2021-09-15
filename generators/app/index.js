@@ -328,25 +328,25 @@ module.exports = class extends Generator {
             const pkg = this.fs.readJSON(pkg_path);
             pkg.dependencies = sort(
                 lodash.assign(pkg.dependencies, {
-                    '@dizmo/dizmo.js': '^1.4.72',
-                    'core-js': '^3.16.4',
+                    '@dizmo/dizmo.js': '^1.4.73',
+                    'core-js': '^3.17.3',
                     'regenerator-runtime': '^0.13.9'
                 })
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
-                    '@babel/core': '^7.15.0',
-                    '@babel/preset-env': '^7.15.0'
+                    '@babel/core': '^7.15.5',
+                    '@babel/preset-env': '^7.15.6'
                 })
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
                     'babel-loader': '^8.2.2',
                     'css-loader': '^6.2.0',
-                    'sass': '^1.38.2',
+                    'sass': '^1.41.0',
                     'sass-loader': '^12.1.0',
                     'style-loader': '^3.2.1',
-                    'webpack': '^5.51.1',
+                    'webpack': '^5.52.1',
                     'webpack-stream': '^7.0.0'
                 })
             );
