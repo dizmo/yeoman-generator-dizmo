@@ -11,9 +11,11 @@ const npm_config = (...args) => cli.run('npm', 'config', ...args)({
 });
 const if_check = (key, delta = 86400000) => async (now) => {
     const epoch = parseInt(await npm_config('get', `${key}:epoch`)) || 0;
-    if (now - epoch > delta) {
+    if (now - epoch > delta) try {
         await npm_config('set', `${key}:epoch=${now}`);
         return true;
+    } catch (ex) {
+        console.error(ex);
     }
     return false;
 };
