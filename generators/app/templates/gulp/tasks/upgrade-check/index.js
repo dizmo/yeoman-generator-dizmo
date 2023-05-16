@@ -10,12 +10,17 @@ const npm_config = (...args) => cli.run('npm', 'config', ...args)({
     stdio: 'pipe', shell: true
 });
 const if_check = (key, delta = 86400000) => async (now) => {
+    const upgrade_check = process.env['DZM_UPGRADE_CHECK'];
+    if (typeof upgrade_check === 'string') try {
+        return JSON.parse(upgrade_check || '0');
+    } catch (ex) {
+        console.error(ex);
+    }
     const epoch = parseInt(await npm_config('get', `${key}:epoch`)) || 0;
     if (now - epoch > delta) try {
         await npm_config('set', `${key}:epoch=${now}`);
+    } finally {
         return true;
-    } catch (ex) {
-        console.error(ex);
     }
     return false;
 };

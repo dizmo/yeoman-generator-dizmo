@@ -328,6 +328,12 @@ npm run lint
 npm run build
 ```
 
+* `build`: ..or if the `DZM_UPGRADE_CHECK` environment variable has been defined, then the dizmo is build accordingly with or without the upgrade check.
+
+```sh
+DZM_UPGRADE_CHECK=false npm run build
+```
+
 * `test`: ensures to run tests &ndash; returns and error code of `0` for success and `1` for failure.
 
 ```sh
