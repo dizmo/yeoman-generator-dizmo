@@ -1,14 +1,48 @@
 const cli = require('../../tools/cli.js');
 const ansi_colors = require('ansi-colors');
 const fancy_log = require('fancy-log');
+const fs = require('fs').promises;
 const gulp = require('gulp');
+const path = require('path');
 
 const npm_outdated = (...args) => cli.run('npm', 'outdated', ...args)({
     stdio: 'pipe', shell: true
 });
-const npm_config = (...args) => cli.run('npm', 'config', ...args)({
-    stdio: 'pipe', shell: true
-});
+const get_epoch = async (key) => {
+    const name = path.join(__dirname, 'epoch.json');
+    try {
+        const text = await fs.readFile(name);
+        return JSON.parse(text)[key];
+    } catch (ex) {
+        if (ex && ex.code !== 'ENOENT') {
+            console.error(ex);
+        }
+    }
+};
+const set_epoch = async (key, value) => {
+    const name = path.join(__dirname, 'epoch.json');
+    const json = {};
+    try {
+        const text = await fs.readFile(name);
+        for (const [k, v] of JSON.parse(text)) {
+            json[k] = v;
+        }
+    } catch (ex) {
+        if (ex && ex.code !== 'ENOENT') {
+            console.error(ex);
+        }
+    }
+    try {
+        const text = JSON.stringify({
+            ...json, [key]: value
+        });
+        await fs.writeFile(name, text);
+    } catch (ex) {
+        if (ex && ex.code !== 'ENOENT') {
+            console.error(ex);
+        }
+    }
+};
 const if_check = (key, delta = 86400000) => async (now) => {
     const upgrade_check = process.env['DZM_UPGRADE_CHECK'];
     if (typeof upgrade_check === 'string') try {
@@ -16,9 +50,9 @@ const if_check = (key, delta = 86400000) => async (now) => {
     } catch (ex) {
         console.error(ex);
     }
-    const epoch = parseInt(await npm_config('get', `${key}:epoch`)) || 0;
+    const epoch = parseInt(await get_epoch(key)) || 0;
     if (now - epoch > delta) try {
-        await npm_config('set', `${key}:epoch=${now}`);
+        await set_epoch(key, now);
     } finally {
         return true;
     }
