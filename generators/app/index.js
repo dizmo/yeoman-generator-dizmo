@@ -329,25 +329,25 @@ module.exports = class extends Generator {
             pkg.dependencies = sort(
                 lodash.assign(pkg.dependencies, {
                     '@dizmo/dizmo.js': '^1.4.74',
-                    'core-js': '^3.25.0',
-                    'regenerator-runtime': '^0.13.9'
+                    'core-js': '^3.31.1',
+                    'regenerator-runtime': '^0.13.11'
                 })
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
-                    '@babel/core': '^7.18.13',
-                    '@babel/preset-env': '^7.18.10',
+                    '@babel/core': '^7.22.9',
+                    '@babel/preset-env': '^7.22.9',
                 })
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
-                    'babel-loader': '^8.2.5',
-                    'css-loader': '^6.7.1',
+                    'babel-loader': '^8.3.0',
+                    'css-loader': '^6.8.1',
                     'sass': '^1.41.0',
-                    'sass': '^1.54.6',
-                    'sass-loader': '^13.0.2',
-                    'style-loader': '^3.3.1',
-                    'webpack': '^5.74.0',
+                    'sass': '^1.63.6',
+                    'sass-loader': '^13.3.2',
+                    'style-loader': '^3.3.3',
+                    'webpack': '^5.88.1',
                     'webpack-stream': '^7.0.0',
                 })
             );
@@ -355,13 +355,13 @@ module.exports = class extends Generator {
                 lodash.assign(pkg.devDependencies, {
                     'gulp': '^4.0.2',
                     'gulp-copy': '^4.0.1',
-                    'gulp-dart-sass': '^1.0.2',
+                    'gulp-dart-sass': '^1.1.0',
                     'gulp-eslint': '^6.0.0',
                     'gulp-htmlmin': '^5.0.1',
                     'gulp-plist': '^0.9.0',
                     'gulp-rename': '^2.0.0',
-                    'gulp-replace': '^1.1.3',
-                    'gulp-dart-sass': '^1.0.2',
+                    'gulp-replace': '^1.1.4',
+                    'gulp-dart-sass': '^1.1.0',
                     'gulp-sourcemaps': '^3.0.0',
                     'gulp-zip': '^5.1.0',
                 })
@@ -369,26 +369,27 @@ module.exports = class extends Generator {
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
                     'ansi-colors': '^4.1.3',
-                    'eslint': '^8.23.0',
+                    'eslint': '^8.45.0',
                     'fancy-log': '^2.0.0',
-                    'rimraf': '^3.0.2',
-                    'yargs': '^17.5.1'
+                    'rimraf': '^5.0.1',
+                    'yargs': '^17.7.2'
                 })
             );
             pkg.optionalDependencies = sort(
                 lodash.assign(pkg.optionalDependencies, {
-                    'chai': '^4.3.6',
+                    'chai': '^4.3.7',
                     'chai-spies': '^1.0.0',
                     'ignore-styles': '^5.0.1',
-                    'javascript-obfuscator': '^4.0.0',
-                    'jsdoc': '^3.6.11',
-                    'jsdom': '^20.0.0',
+                    'javascript-obfuscator': '^4.0.2',
+                    'jsdoc': '^4.0.2',
+                    'jsdom': '^22.1.0',
                     'jsdom-global': '^3.0.2',
                     'minami': '^1.2.3',
-                    'mocha': '^10.0.0',
+                    'mocha': '^10.2.0',
                     'pump': '^3.0.0',
                     'request': '^2.88.2',
-                    'webpack-cli': '^4.10.0',
+                    'taffydb': '^2.7.3',
+                    'webpack-cli': '^5.1.4',
                     'webpack-obfuscator': '^3.5.1'
                 })
             );

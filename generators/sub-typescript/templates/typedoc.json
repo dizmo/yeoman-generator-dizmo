@@ -1,4 +1,5 @@
 {
+    "disableSources": true,
     "hideGenerator": true,
     "out": "docs"
 }
