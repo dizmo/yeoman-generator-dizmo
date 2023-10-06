@@ -73,7 +73,7 @@ const print = (json, text = 'Generator Upgrade Available', box = {
         offset ? (box.width - text.length) % 2 : 0
     )
 }) => {
-    if (typeof json !== 'object' || json === null) {
+    if (typeof json !== 'object' || json === null || !json.length) {
         return;
     }
     fancy_log(`┌${'─'.repeat(box.width)}┐`);
