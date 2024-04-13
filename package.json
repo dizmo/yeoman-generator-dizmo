@@ -45,7 +45,7 @@
   "name": "@dizmo/generator-dizmo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dizmo/yeoman-generator-dizmo"
+    "url": "git+https://github.com/dizmo/yeoman-generator-dizmo.git"
   },
   "scripts": {
     "test": "npx mocha test --recursive"
