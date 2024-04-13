@@ -112,7 +112,12 @@ module.exports = class extends Generator {
                 this.destinationPath('coffeelint.json')
             );
         }
-        this.env.conflicter.force = this.options.force || upgrade;
+        if (this.env && this.env.conflicter) {
+            this.env.conflicter.force = this.options.force || upgrade;
+        }
+        if (this.env && this.env.conflicterOptions) {
+            this.env.conflicterOptions.force = this.options.force || upgrade;
+        }
     }
     async end() {
         await this._mov();

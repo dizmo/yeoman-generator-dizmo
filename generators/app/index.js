@@ -485,7 +485,12 @@ module.exports = class extends Generator {
                 );
             }
         }
-        this.env.conflicter.force = upgrade;
+        if (this.env && this.env.conflicter) {
+            this.env.conflicter.force = upgrade;
+        }
+        if (this.env && this.env.conflicterOptions) {
+            this.env.conflicterOptions.force = upgrade;
+        }
     }
     async end() {
         const pkg = this.fs.readJSON(
