@@ -1,5 +1,5 @@
 const assert = require("yeoman-assert");
-const helpers = require("yeoman-test");
+const helpers = require("yeoman-test").default;
 const { join } = require("path");
 
 describe("generator-dizmo:app", function () {

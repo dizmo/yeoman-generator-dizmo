@@ -1,9 +1,9 @@
 'use strict';
 
-const chalk = require('chalk');
+const chalk = require('chalk').default;
 const fs = require('fs');
 const fse = require('fs-extra');
-const Generator = require('yeoman-generator');
+const Generator = require('yeoman-generator').default;
 const lodash = require('lodash');
 const os = require('os');
 const path = require('path');
@@ -11,7 +11,7 @@ const process = require('process');
 const shell = require('shelljs');
 const sort = require('./functions/sort');
 const rimraf = require('rimraf');
-const yosay = require('yosay');
+const yosay = require('yosay').default;
 
 module.exports = class extends Generator {
     constructor(args, opts) {
@@ -30,12 +30,12 @@ module.exports = class extends Generator {
             type: String
         });
         this.option('author', {
-            defaults: this.user.git.name() || process.env.USER,
+            defaults: this.user?.git?.name() || process.env.USER,
             desc: 'Name of the author',
             type: String
         });
         this.option('email', {
-            defaults: this.user.git.email() || process.env.MAIL,
+            defaults: this.user?.git?.email() || process.env.MAIL,
             desc: 'Email of the author',
             type: String
         });
@@ -330,13 +330,14 @@ module.exports = class extends Generator {
                 lodash.assign(pkg.dependencies, {
                     '@dizmo/dizmo.js': '^1.4.74',
                     'core-js': '^3.31.1',
-                    'regenerator-runtime': '^0.13.11'
+                    'regenerator-runtime': '^0.13.11',
                 })
             );
             pkg.devDependencies = sort(
                 lodash.assign(pkg.devDependencies, {
                     '@babel/core': '^7.22.9',
                     '@babel/preset-env': '^7.22.9',
+                    '@babel/runtime': '^7.28.4',
                 })
             );
             pkg.devDependencies = sort(
@@ -372,7 +373,7 @@ module.exports = class extends Generator {
                     'eslint': '^8.45.0',
                     'fancy-log': '^2.0.0',
                     'rimraf': '^5.0.1',
-                    'yargs': '^17.7.2'
+                    'yargs': '^17.7.2',
                 })
             );
             pkg.optionalDependencies = sort(
@@ -390,7 +391,7 @@ module.exports = class extends Generator {
                     'request': '^2.88.2',
                     'taffydb': '^2.7.3',
                     'webpack-cli': '^5.1.4',
-                    'webpack-obfuscator': '^3.5.1'
+                    'webpack-obfuscator': '^3.5.1',
                 })
             );
             if (pkg.optionalDependencies['closure-webpack-plugin']) {
@@ -409,7 +410,7 @@ module.exports = class extends Generator {
                     'lint': 'node ./gulp/tools/run-task.js lint',
                     'test': 'node ./gulp/tools/run-task.js test',
                     'upload': 'node ./gulp/tools/run-task.js upload',
-                    'watch': 'node ./gulp/tools/run-task.js watch'
+                    'watch': 'node ./gulp/tools/run-task.js watch',
                 })
             );
             this.fs.writeJSON(pkg_path, pkg, null, 2);

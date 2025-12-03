@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const fse = require('fs-extra');
-const Generator = require('yeoman-generator');
+const Generator = require('yeoman-generator').default;
 const lodash = require('lodash');
 const rimraf = require('rimraf');
 const sort = require('../app/functions/sort');

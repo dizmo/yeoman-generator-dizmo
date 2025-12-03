@@ -11,20 +11,22 @@
     }
   ],
   "dependencies": {
-    "chalk": "^4.1.2",
-    "fs-extra": "^11.1.1",
+    "chalk": "^5.6.2",
+    "fs-extra": "^11.3.2",
     "lodash": "^4.17.21",
-    "rimraf": "^5.0.1",
-    "shelljs": "^0.8.5",
-    "xregexp": "^5.1.1",
-    "yeoman-generator": "^5.9.0",
-    "yosay": "^2.0.2"
+    "rimraf": "^6.1.2",
+    "shelljs": "^0.10.0",
+    "xregexp": "^5.1.2",
+    "yeoman-generator": "^7.5.1",
+    "yosay": "^3.0.0"
   },
   "description": "dizmoGen: a generator for dizmo projects",
   "devDependencies": {
-    "mocha": "^10.2.0",
+    "@yeoman/adapter": "^4.0.1",
+    "mocha": "^11.7.5",
     "yeoman-assert": "^3.1.1",
-    "yeoman-test": "^6.3.0"
+    "yeoman-environment": "^5.1.1",
+    "yeoman-test": "^11.2.0"
   },
   "files": [
     "generators/app",
